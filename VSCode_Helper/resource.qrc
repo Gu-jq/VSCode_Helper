@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/插入图像示例.bmp</file>
+    </qresource>
+</RCC>
