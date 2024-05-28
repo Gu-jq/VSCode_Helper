@@ -203,9 +203,9 @@
              <item>
               <widget class="QLabel" name="label_2">
                <property name="text">
-                <string>程序没有在您的电脑上找到VS Code
-如果还没有下载安装，
-请点击下方按钮转至官网下载</string>
+                <string>如果没有下一步按钮，说明程序没能在您的电脑上
+自动找到VS Code
+若还未下载，请点击下方按钮转至官网下载</string>
                </property>
               </widget>
              </item>
@@ -390,6 +390,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="pushButton_5">
+               <property name="text">
+                <string>上面的下载不了再用这个</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QLabel" name="label_9">
                <property name="text">
                 <string>如果发现下载得到的文件无法打开
@@ -445,13 +452,6 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_5">
-               <property name="text">
-                <string>我更喜欢VS下的MSVC</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -478,7 +478,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="next_button_2">
+              <widget class="QPushButton" name="cnext_button_2">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                  <horstretch>0</horstretch>
