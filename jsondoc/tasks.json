@@ -1,0 +1,57 @@
+{
+    "options": 
+    {
+        "env": {
+            "Path": "${env:Path}"
+        }
+    },
+    "tasks": 
+    [
+        {
+            "label": "single file build",
+            "command": "",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-std=c++17",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "args": [],
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "dependsOn": "single file build",
+            "label": "run and pause",
+            "options": {
+                "env": {
+                    "Path": "${env:Path}"
+                }
+            },
+            "presentation": {
+                "clear": true,
+                "echo": false,
+                "focus": false,
+                "panel": "shared",
+                "reveal": "never",
+                "showReuseMessage": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "type": "pause-console"
+        }
+    ],
+    "version": "2.0.0"
+}
