@@ -3,4 +3,10 @@
         <file>image/插入图像示例.bmp</file>
         <file>image/占位图片.png</file>
     </qresource>
+    <qresource prefix="/jsondoc">
+        <file>jsondoc/c_cpp_properties.json</file>
+        <file>jsondoc/launch.json</file>
+        <file>jsondoc/tasks.json</file>
+        <file>jsondoc/hello_world.cpp</file>
+    </qresource>
 </RCC>

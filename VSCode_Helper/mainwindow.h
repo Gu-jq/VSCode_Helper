@@ -48,11 +48,17 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButton_16_clicked();
+
+    void on_cnext_button_3_clicked();
+
+    void on_cnext_button_5_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;
     QProcess *process_code;
-    std::string vs_path, gcc_path;
+    std::string vs_path, gcc_path, work_dir;
     bool find_vsc;
 };
 #endif // MAINWINDOW_H
