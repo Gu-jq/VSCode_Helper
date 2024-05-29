@@ -4,6 +4,9 @@
 #include <QUrl>
 #include <QFile>
 #include <QFileDialog>
+#include "string_operator.h"
+#include <QDir>
+#include "json_operator.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -48,6 +51,7 @@ bool MainWindow::install(std::string name){
         return true;
     }
     ui->notice_1->setText("正在为VS Code安装插件，请稍后");
+    ui->notice_1->repaint();
     process.start("cmd.exe", QStringList() << "/c" << ("code --install-extension " + name).c_str());
     if (!process.waitForFinished(15000)) {
         process.terminate(); // 中止进程
@@ -227,5 +231,83 @@ void MainWindow::on_pushButton_5_clicked()
     if (!QDesktopServices::openUrl(url)) {
         return;
     }
+}
+
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    Stringoperator s;
+    if(s.check_asc(ui->path_input_3->text().toStdString())){
+        QDir dir;
+        if (!dir.exists(ui->path_input_3->text())) {
+            if(dir.mkpath(ui->path_input_3->text())){
+                ui->notice_3->setText("检查已通过，文件夹创建成功");
+                ui->cnext_button_3->show();
+                ui->cnext_button_4->show();
+                work_dir = ui->path_input_3->text().toStdString();
+            }
+            else{
+                ui->notice_3->setText("无法按照对应路径创建文件夹，请检查路径合理性");
+            }
+        }
+        else{
+            ui->notice_3->setText("检查已通过，文件夹已存在");
+            ui->cnext_button_3->show();
+            ui->cnext_button_4->show();
+            work_dir = ui->path_input_3->text().toStdString();
+        }
+    }
+    else{
+        ui->notice_3->setText("路径中含有非法字符，文件夹创建失败");
+    }
+}
+
+
+void MainWindow::on_cnext_button_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->cnext_button_5->hide();
+    ui->notice_4->setText("正在按照推荐配置自动生成配置文件\n请耐心等待");
+    ui->notice_4->repaint();
+    Json_operator js;
+    bool flag = true;
+    flag = flag & js.write_launch(work_dir, gcc_path);
+    flag = flag & js.write_properties(work_dir, gcc_path);
+    flag = flag & js.write_tasks(work_dir, gcc_path);
+    if(!flag){
+        ui->notice_4->setText("很抱歉\n程序生成配置文件时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+        ui->cnext_button_5->show();
+        return;
+    }
+    else{
+        QString sourceFile = ":/jsondoc/jsondoc/hello_world.cpp";
+        QString targetFile = (work_dir + "\\hello_world.cpp").c_str();
+        if(QFile::copy(sourceFile, targetFile)){
+            QProcess process;
+            QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+            env.insert("PATH", env.value("Path") + (";" + vs_path + "\\bin").c_str());
+            process.setProcessEnvironment(env);
+            process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code . && code " + "hello_world.cpp").c_str());
+            if(!process.waitForFinished(10000)){
+                ui->notice_4->setText("很抱歉\n程序启动VS Code时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+                ui->cnext_button_5->show();
+                return;
+            }
+            ui->notice_4->setText("程序已经完成自动配置\n感谢您使用VS Code Helper");
+            ui->cnext_button_5->show();
+            return;
+        }
+        else{
+            ui->notice_4->setText("很抱歉\n程序生成测试源码时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+            ui->cnext_button_5->show();
+            return;
+        }
+    }
+}
+
+
+void MainWindow::on_cnext_button_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
