@@ -35,6 +35,27 @@ public:
         return false;
     }
 
+    bool check_head(std::string s){
+        delete_quot(s);
+        int i=0;
+        while(1){
+            if(s[i]==' '){
+                i++;
+                continue;
+            }
+            if(s[i]<'A'||s[i]>'Z'){
+                return false;
+            }
+            else if(s[i+1]!=':'){
+                return false;
+            }
+            else if(s[i+2]!='/'&&s[i+2]!='\\'){
+                return false;
+            }
+            return true;
+        }
+    }
+
 };
 
 
