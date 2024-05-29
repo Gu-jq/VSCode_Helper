@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/image">
-        <file>image/插入图像示例.bmp</file>
         <file>image/占位图片.png</file>
     </qresource>
     <qresource prefix="/jsondoc">
