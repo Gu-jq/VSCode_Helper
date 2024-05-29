@@ -3,6 +3,7 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QFile>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -181,6 +182,48 @@ void MainWindow::on_pushButton_13_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
     QUrl url("https://7-zip.org/a/7z2406-x64.exe");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_18_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/Microsoft VS Code",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_19_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/bin",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_2->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_3->setText(dir);
+}
+
+
+void MainWindow::on_cnext_button_2_clicked()
+{
+    ui->notice_3->setText(" ");
+    ui->cnext_button_3->hide();
+    ui->cnext_button_4->hide();
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    QUrl url("https://www.lanzouh.com/iGwmo201g7cj");
     if (!QDesktopServices::openUrl(url)) {
         return;
     }
