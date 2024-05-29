@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setStyleSheet("* { color: rgb(0, 0, 0); }");
     MainWindow w;
     w.setFixedSize(QSize(480, 480));
     w.show();

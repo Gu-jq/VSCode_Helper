@@ -85,6 +85,9 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>C++配置</string>
             </property>
@@ -227,6 +230,13 @@
              </item>
              <item>
               <widget class="QLineEdit" name="path_input"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_18">
+               <property name="text">
+                <string>选择文件夹</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QLabel" name="label_4">
@@ -392,7 +402,7 @@
              <item>
               <widget class="QPushButton" name="pushButton_5">
                <property name="text">
-                <string>上面的下载不了再用这个</string>
+                <string>上面的下载不了再用这个,密码vsc</string>
                </property>
               </widget>
              </item>
@@ -400,7 +410,7 @@
               <widget class="QLabel" name="label_9">
                <property name="text">
                 <string>如果发现下载得到的文件无法打开
-您需要下载一个解压软件
+您需要下载一个解压软件进行解压
 下面提供了推荐的免费解压软件7-Zip的下载链接</string>
                </property>
               </widget>
@@ -423,6 +433,13 @@
              </item>
              <item>
               <widget class="QLineEdit" name="path_input_2"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_19">
+               <property name="text">
+                <string>选择文件夹</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QLabel" name="label_8">
@@ -487,6 +504,167 @@
                </property>
                <property name="text">
                 <string>下一步</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="cpage_3">
+     <widget class="QWidget" name="widget_12" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>481</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QWidget" name="cpic_3" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#cpic_3{
+	background-image: url(:/image/image/占位图片.png);
+}</string>
+         </property>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>101</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>应有图片：
+进度2 设置工作文件夹</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_13" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QWidget" name="widget_14" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>VS Code的相关配置都依托于文件夹进行
+你需要设置一个文件夹用于存放你的C++代码
+请在下方输入一个路径，路径中不能有中文字符</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="path_input_3"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_7">
+               <property name="text">
+                <string>选择文件夹</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>选择完毕后，请点击下方按钮检查路径可用性</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_16">
+               <property name="text">
+                <string>路径检查</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="notice_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>查找结果显示框</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>如果您完全不清楚C++编译选项和VS Code的设置
+推荐使用默认推荐配置直接完成接下来的全部工作</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="cnext_button_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>以推荐配置继续</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>如果您需要进行一些配置调整
+请点击下方自定义配置按钮</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="cnext_button_4">
+               <property name="text">
+                <string>自定义配置选项</string>
                </property>
               </widget>
              </item>

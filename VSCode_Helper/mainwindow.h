@@ -38,6 +38,16 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_19_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_cnext_button_2_clicked();
+
+    void on_pushButton_5_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;
