@@ -7,6 +7,7 @@
 #include "string_operator.h"
 #include <QDir>
 #include "json_operator.h"
+//windeployqt: 为exe链接dll的指令
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
