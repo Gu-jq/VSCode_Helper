@@ -56,6 +56,37 @@ public:
         }
     }
 
+    int get_version(std::string s){
+        int k=s.size();
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='\n'){
+                k=i;
+                break;
+            }
+        }
+
+        int vernum=0;
+        int para=1;
+        for(int i=k-1;i>=0;i--){
+            if(s[i]!='.'){
+                if(s[i]<'0'||s[i]>'9'){
+                    break;
+                }
+                vernum += para*(s[i]-'0');
+                para*=10;
+            }
+            else{
+                if(para>100){
+                    para=10000;
+                }
+                else{
+                    para=100;
+                }
+            }
+        }
+        return vernum;
+    }
+
 };
 
 
