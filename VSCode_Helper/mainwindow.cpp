@@ -9,6 +9,7 @@
 #include "json_operator.h"
 #include <vector>
 #include <QSettings>
+#include <QFileInfo>
 //windeployqt: 为exe链接dll的指令
 
 MainWindow::MainWindow(QWidget *parent)
@@ -27,13 +28,11 @@ MainWindow::~MainWindow()
 
 
 bool path_check(std::string aim_array[], int aim_num, std::vector<std::string>& path_array, std::string &path){
-    for(std::string s : path_array){
+    for(std::string& s : path_array){
         int cnt = 0;
         for (int j = 0; j < aim_num; j++){
-            if(s.size() > 0 && s[s.size() - 1] != '\\' && s[s.size() - 1] != '/')
-                s = s + '\\';
             qDebug() << s;
-            if(QFile::exists((s + aim_array[j]).c_str()))
+            if(QFile::exists((s + '\\' + aim_array[j]).c_str()))
                 cnt++;
             else
                 break;
@@ -59,6 +58,27 @@ void get_PATH(std::vector<std::string>* path_array){
     paths = path.split(";");
     for(QString &s : paths){
         path_array->push_back(s.toStdString());
+    }
+}
+
+
+void set_PATH(std::string path){
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << ("setx PATH \"%PATH%;" + path + "\"").c_str());
+    process.waitForFinished();
+}
+
+//can't use when testing
+void find_where(std::vector<std::string>* path_array, std::string cmd){
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << ("where " + cmd).c_str());
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    QStringList list = output.split('\n');
+    for(QString& s : list){
+        QFileInfo fileInfo(s);
+        QString dir = fileInfo.absolutePath();
+        path_array->push_back(dir.toStdString());
     }
 }
 
@@ -141,7 +161,7 @@ void MainWindow::on_pushButton_10_clicked()
     if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->cnext_button_1->show();
-        ui->notice_1->setText(QString("已自动找到VS Code"));
+        ui->notice_1->setText(QString("成功找到VS Code"));
         return;
     } else {
         //没找到
@@ -168,6 +188,7 @@ void MainWindow::on_cnext_button_1_clicked()
     }
 
     std::vector<std::string> path_arr;
+    path_arr.push_back(gcc_path);
     get_PATH(&path_arr);
     std::string aim_arr[2];
     aim_arr[0] = "g++.exe";
@@ -261,6 +282,19 @@ void MainWindow::on_pushButton_7_clicked()
 
 void MainWindow::on_cnext_button_2_clicked()
 {
+    Stringoperator op;
+    QProcess process;
+    process.setProgram("cmd.exe");
+    process.setArguments(QStringList() << "/c" << ( gcc_path + "\\g++.exe --version").c_str());
+    process.start();
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    int ver = op.get_version(output.toStdString());
+    qDebug() << QString::fromLocal8Bit(process.readAllStandardError()).toStdU16String();
+    if(ver < 80000){
+        ui->notice_2->setText(QString("检测到mingw编译器版本过低，您应当下载新版"));
+        return;
+    }
     ui->notice_3->setText(" ");
     ui->cnext_button_3->hide();
     ui->cnext_button_4->hide();
@@ -468,6 +502,18 @@ void MainWindow::on_pushButton_24_clicked()
 
 void MainWindow::on_pynext_button_1_clicked()
 {
+    if(!install("ms-ceintl.vscode-language-pack-zh-hans")){
+        ui->notice_6->setText(QString("插件安装失败，请检查网络连接"));
+        return;
+    }
+    if(!install("ms-python.python")){
+        ui->notice_6->setText(QString("插件安装失败，请检查网络连接"));
+        return;
+    }
+    if(!install("ms-python.debugpy")){
+        ui->notice_6->setText(QString("插件安装失败，请检查网络连接"));
+        return;
+    }
     ui->stackedWidget->setCurrentIndex(7);
 }
 
@@ -495,9 +541,140 @@ void MainWindow::on_pushButton_25_clicked()
 }
 
 
-void MainWindow::on_pynextButton_2_1_clicked()
+void MainWindow::on_pynext_button_2_1_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(8);
+    std::vector<std::string> path_arr;
+    path_arr.push_back(py_path);
+    get_PATH(&path_arr);
+    std::string aim_arr[1] = {"python.exe"};
+    if (path_check(aim_arr, 1, path_arr, py_path)) {
+        // 找到
+        ui->pynext_button_3_1->show();
+        ui->path_input_5->setText(py_path.c_str());
+        ui->notice_7->setText(QString("已自动找到Python"));
+        ui->stackedWidget->setCurrentIndex(8);
+        return;
+    } else {
+        //没找到
+        ui->stackedWidget->setCurrentIndex(8);
+        ui->notice_6->setText(QString("没能自动找到Python"));
+        ui->pynext_button_3_1->hide();
+        return;
+    }
+}
 
+
+void MainWindow::on_pushButton_26_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QUrl url("https://www.python.org/downloads/");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_27_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), " ",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_5->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_29_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    std::vector<std::string> path_arr;
+    path_arr.push_back(py_path);
+    get_PATH(&path_arr);
+    std::string aim_arr[1] = {"python.exe"};
+    if (path_check(aim_arr, 1, path_arr, py_path)) {
+        // 找到
+        ui->pynext_button_3_1->show();
+        ui->notice_7->setText(QString("成功找到Python"));
+        return;
+    } else {
+        //没找到
+        ui->notice_6->setText(QString("没能找到Python"));
+        ui->pynext_button_3_1->hide();
+        return;
+    }
+}
+
+
+void MainWindow::on_pynext_button_3_1_clicked()
+{
+    std::vector<std::string> path_arr;
+    get_PATH(&path_arr);
+    if(py_path[py_path.size() - 1] == '\\' && py_path[py_path.size() - 1] == '/')
+        py_path.pop_back();
+    bool flag1 = true, flag2 = true;
+    QString path1 = QDir::cleanPath(py_path.c_str());
+    QString path2 = QDir::cleanPath((py_path + "/Scripts").c_str());
+    for(std::string& s : path_arr){
+        QString path = QDir::cleanPath(s.c_str());
+        if(path1 == path)
+            flag1 = false;
+        if(path2 == path)
+            flag2 = false;
+    }
+    if(flag1){
+        qDebug() << "Don't have python in PATH";
+        set_PATH(path1.toStdString());
+    }
+    if(flag2){
+        qDebug() << "Don't have python/Scripts in PATH";
+        set_PATH(path2.toStdString());
+    }
+    ui->stackedWidget->setCurrentIndex(9);
+    ui->url_input_1->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    ui->key_input_1->setText("F6");
+}
+
+
+void MainWindow::on_pushButton_21_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_22_clicked()
+{
+    ui->url_input_1->setText("https://pypi.org/simple/");
+}
+
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << "python -m pip install --upgrade pip");
+    process.waitForFinished();
+    process.start("cmd.exe", QStringList() << "/c" << ("pip pip config set global.index-url " + ui->url_input_1->text()));
+    process.waitForFinished();
+}
+
+
+void MainWindow::on_pushButton_30_clicked()
+{
+    if(install("ms-python.debugpy")){
+        ui->pushButton_30->setText("Pylance安装成功！");
+    }
+}
+
+
+void MainWindow::on_pynext_button_2_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(10);
 }
 
