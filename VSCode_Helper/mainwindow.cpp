@@ -381,3 +381,79 @@ void MainWindow::on_cnext_button_4_clicked()
     ui->stackedWidget->setCurrentIndex(5);
 }
 
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
+    QByteArray username = qgetenv("USERNAME");
+    std::string path_arr[3];
+    path_arr[0] = "C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
+    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    path_arr[2] = vs_path;
+    std::string aim_arr[1] = {"Code.exe"};
+    int num = path_check(aim_arr, 1, path_arr, 3);
+    if (num != -1) {
+        // 找到
+        ui->pynext_button_1->show();
+        vs_path = path_arr[num];
+        qDebug() << vs_path;
+        ui->notice_6->setText(QString("成功找到VS Code"));
+        ui->stackedWidget->setCurrentIndex(6);
+        return;
+    } else {
+        //没找到
+        ui->stackedWidget->setCurrentIndex(6);
+        ui->notice_6->setText(QString("没能自动找到VS Code"));
+        ui->pynext_button_1->hide();
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_23_clicked()
+{
+    QUrl url("https://code.visualstudio.com/Download");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+
+void MainWindow::on_pushButton_24_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/Microsoft VS Code",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_5->setText(dir);
+}
+
+
+
+void MainWindow::on_pynext_button_1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
+
+void MainWindow::on_pushButton_25_clicked()
+{
+    QByteArray username = qgetenv("USERNAME");
+    std::string path_arr[3];
+    path_arr[0] = "C:\\users\\" + QString(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
+    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    path_arr[2] = ui->path_input_5->text().toStdString();
+    std::string aim_arr[1] = {"Code.exe"};
+    int num = path_check(aim_arr, 1, path_arr, 3);
+    if (num != -1) {
+        // 找到
+        ui->pynext_button_1->show();
+        vs_path = path_arr[num];
+        ui->notice_6->setText(QString("成功找到VS Code"));
+        return;
+    } else {
+        //没找到
+        ui->notice_6->setText(QString("没能找到VS Code"));
+        return;
+    }
+}
+
