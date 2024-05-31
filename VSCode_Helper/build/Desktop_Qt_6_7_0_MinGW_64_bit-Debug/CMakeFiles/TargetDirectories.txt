@@ -1,0 +1,9 @@
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/VSCode_Helper.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/VSCode_Helper_autogen_timestamp_deps.dir
+C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/VSCode_Helper_autogen.dir

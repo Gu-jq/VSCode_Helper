@@ -60,6 +60,18 @@ private slots:
 
     void on_cnext_button_4_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_path_input_cursorPositionChanged(int arg1, int arg2);
+
+    void on_pushButton_24_clicked();
+
+    void on_pushButton_25_clicked();
+
+    void on_pynext_button_1_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;

@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/VSCode_Helper_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper",
+	"CMAKE_SOURCE_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper",
+	"INCLUDE_DIR" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/VSCode_Helper_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Qt/VSCode_Helper_code-main/VSCode_Helper/image/\u5360\u4f4d\u56fe\u7247.png",
+		"C:/Qt/VSCode_Helper_code-main/VSCode_Helper/jsondoc/launch.json",
+		"C:/Qt/VSCode_Helper_code-main/VSCode_Helper/jsondoc/c_cpp_properties.json",
+		"C:/Qt/VSCode_Helper_code-main/VSCode_Helper/jsondoc/hello_world.cpp",
+		"C:/Qt/VSCode_Helper_code-main/VSCode_Helper/jsondoc/tasks.json"
+	],
+	"LOCK_FILE" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/VSCode_Helper_autogen.dir/AutoRcc_resource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "resource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resource.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.7.0/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/VSCode_Helper_autogen.dir/AutoRcc_resource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Qt/VSCode_Helper_code-main/VSCode_Helper/resource.qrc",
+	"VERBOSITY" : 0
+}
