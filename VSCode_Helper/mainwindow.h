@@ -54,6 +54,12 @@ private slots:
 
     void on_cnext_button_5_clicked();
 
+    void on_pushButton_15_clicked();
+
+    void on_cnext_button_6_clicked();
+
+    void on_cnext_button_4_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;

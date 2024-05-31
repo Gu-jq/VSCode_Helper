@@ -138,6 +138,10 @@ void MainWindow::on_cnext_button_1_clicked()
         ui->notice_1->setText(QString("插件安装失败，请检查网络连接"));
         return;
     }
+    if(!install("guyutongxue.pause-console")){
+        ui->notice_1->setText(QString("插件安装失败，请检查网络连接"));
+        return;
+    }
     ui->notice_2->setText(" ");
     ui->cnext_button_2->hide();
     ui->stackedWidget->setCurrentIndex(2);
@@ -274,6 +278,7 @@ void MainWindow::on_cnext_button_3_clicked()
     flag = flag & js.write_launch(work_dir, gcc_path);
     flag = flag & js.write_properties(work_dir, gcc_path);
     flag = flag & js.write_tasks(work_dir, gcc_path);
+    flag = flag & js.create_key_bind("F6", "run and pause", "workbench.action.tasks.runTask", "cpp");
     if(!flag){
         ui->notice_4->setText("很抱歉\n程序生成配置文件时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
         ui->cnext_button_5->show();
@@ -309,5 +314,69 @@ void MainWindow::on_cnext_button_3_clicked()
 void MainWindow::on_cnext_button_5_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_cnext_button_6_clicked()
+{
+    bool show_launch = !ui->checkBox_launch1->isChecked();
+    bool show_test = !ui->checkBox_test1->isChecked();
+    bool stop = ui->checkBox_launch2->isChecked();
+    bool warn_err = ui->checkBox_test2->isChecked();
+    std::string cpp_std = ui->comboBox_cppstd->currentText().toStdString();
+    int optimize = ui->comboBox_optimize->currentIndex();
+    int warn = ui->comboBox_warn->currentIndex();
+    //copy from 272~309
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->cnext_button_5->hide();
+    ui->notice_4->setText("正在按照自定义配置自动生成配置文件\n请耐心等待");
+    ui->notice_4->repaint();
+    Json_operator js;
+    bool flag = true;
+    flag = flag & js.write_launch(work_dir, gcc_path, show_launch, stop);
+    flag = flag & js.write_properties(work_dir, gcc_path, cpp_std);
+    flag = flag & js.write_tasks(work_dir, gcc_path, cpp_std, show_test, optimize, warn, warn_err);
+    flag = flag & js.create_key_bind("F6", "run and pause", "cpp", "workbench.action.tasks.runTask");
+    if(!flag){
+        ui->notice_4->setText("很抱歉\n程序生成配置文件时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+        ui->cnext_button_5->show();
+        return;
+    }
+    else{
+        QString sourceFile = ":/jsondoc/jsondoc/hello_world.cpp";
+        QString targetFile = (work_dir + "\\hello_world.cpp").c_str();
+        if(QFile::copy(sourceFile, targetFile)){
+            QProcess process;
+            QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+            env.insert("PATH", env.value("Path") + (";" + vs_path + "\\bin").c_str());
+            process.setProcessEnvironment(env);
+            process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code . && code " + "hello_world.cpp").c_str());
+            if(!process.waitForFinished(10000)){
+                ui->notice_4->setText("很抱歉\n程序启动VS Code时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+                ui->cnext_button_5->show();
+                return;
+            }
+            ui->notice_4->setText("程序已经完成自动配置\n感谢您使用VS Code Helper");
+            ui->cnext_button_5->show();
+            return;
+        }
+        else{
+            ui->notice_4->setText("很抱歉\n程序生成测试源码时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
+            ui->cnext_button_5->show();
+            return;
+        }
+    }
+}
+
+
+void MainWindow::on_cnext_button_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
 }
 
