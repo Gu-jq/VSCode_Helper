@@ -68,6 +68,8 @@ public:
         int vernum=0;
         int para=1;
         for(int i=k-1;i>=0;i--){
+            if(s[i] == '\r')
+                continue;
             if(s[i]!='.'){
                 if(s[i]<'0'||s[i]>'9'){
                     break;

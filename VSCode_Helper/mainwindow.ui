@@ -1310,7 +1310,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pynextButton_2_1">
+              <widget class="QPushButton" name="pynext_button_2_1">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -1328,12 +1328,12 @@
                 <string>★通过conda实现包管理
 优势：多版本管理简便(此处为多版本配置)
 缺点：体积较大，若仅简单使用有些没有必要
-推荐(如果有不止一门使用py的专业课则强烈推荐)</string>
+如果有py多版本需求(如ai课)则强烈推荐</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pynextButton_2_2">
+              <widget class="QPushButton" name="pynext_button_2_2">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -1440,13 +1440,12 @@
                <property name="text">
                 <string>如果程序没能找到解释器，您有两种解决方案
 1.若您能找到安装位置，可以手动在下方添加
-2.您可以选择卸载并重装，按照默认位置安装
-3.您可以选择卸载并重装，安装时勾选添加PATH</string>
+2.您可以选择卸载并重装，安装时勾选添加PATH</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="path_input_5"/>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_27">
@@ -1458,7 +1457,7 @@
              <item>
               <widget class="QLabel" name="label_39">
                <property name="text">
-                <string>选择完毕后，请点击下方按钮进行检查
+                <string>选择或安装完毕后，请点击下方按钮进行检查
 如果找到了可用的解释器，便可进入下一步</string>
                </property>
               </widget>
@@ -1471,7 +1470,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_20">
+              <widget class="QLabel" name="notice_7">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1506,7 +1505,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="cnext_button_8">
+                 <widget class="QPushButton" name="pynext_button_3_1">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1608,9 +1607,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_32">
+              <widget class="QPushButton" name="pushButton_30">
                <property name="text">
-                <string> </string>
+                <string>推荐安装Pylance，点击即可</string>
                </property>
               </widget>
              </item>
@@ -1628,7 +1627,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_2"/>
+              <widget class="QLineEdit" name="url_input_1"/>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_20">
@@ -1640,14 +1639,7 @@
              <item>
               <widget class="QPushButton" name="pushButton_22">
                <property name="text">
-                <string>出现问题，换回默认源</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_23">
-               <property name="text">
-                <string> </string>
+                <string>改回默认源(请在上方变化后再点击换源)</string>
                </property>
               </widget>
              </item>
@@ -1662,19 +1654,12 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_3"/>
+              <widget class="QLineEdit" name="key_input_1"/>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_28">
                <property name="text">
                 <string>一键配置(将上方清空即可不配置快捷键)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_21">
-               <property name="text">
-                <string> </string>
                </property>
               </widget>
              </item>
@@ -1694,6 +1679,181 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="pypage_3_2">
+     <widget class="QWidget" name="widget_33" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>481</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_19">
+       <item>
+        <widget class="QWidget" name="pypic_5" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#pypic_5{
+	
+	background-image: url(:/image/image/占位图片.png);
+}</string>
+         </property>
+         <widget class="QLabel" name="label_42">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>101</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>应有图片：
+进度2 安装conda</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_39" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_23">
+          <item>
+           <widget class="QWidget" name="widget_40" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_24">
+             <item>
+              <widget class="QLabel" name="label_44">
+               <property name="text">
+                <string>你需要miniconda或anaconda中的conda
+如果无下一步按钮，说明程序没能找到conda
+您可以点击下方按钮前往下载miniconda</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_31">
+               <property name="text">
+                <string>下载miniconda</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_45">
+               <property name="text">
+                <string>如果是程序没能找到conda，您可以在下方
+手动输入或选择conda所在位置</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="path_input_6"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_32">
+               <property name="text">
+                <string>选择文件夹</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_46">
+               <property name="text">
+                <string>选择或安装完毕后，请点击下方按钮进行检查
+如果找到了conda，便可进入下一步</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_33">
+               <property name="text">
+                <string>检查conda</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="notice_8">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>查找结果显示框</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_41" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_20">
+                <item>
+                 <widget class="QPushButton" name="pushButton_34">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>返回</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pynext_button_3_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>下一步</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pypage_4_2"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

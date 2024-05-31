@@ -71,13 +71,35 @@ private slots:
 
     void on_pynext_button_1_clicked();
 
-    void on_pynextButton_2_1_clicked();
+    void on_pynext_button_2_1_clicked();
+
+    void on_pushButton_26_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_27_clicked();
+
+    void on_pushButton_29_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pynext_button_3_1_clicked();
+
+    void on_pushButton_21_clicked();
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_20_clicked();
+
+    void on_pushButton_30_clicked();
+
+    void on_pynext_button_2_2_clicked();
 
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;
     QProcess *process_code;
-    std::string vs_path, gcc_path, work_dir;
+    std::string vs_path, gcc_path, work_dir, py_path, conda_path;
     bool find_vsc;
 };
 #endif // MAINWINDOW_H
