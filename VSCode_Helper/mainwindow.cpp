@@ -342,7 +342,7 @@ void MainWindow::on_cnext_button_6_clicked()
     flag = flag & js.write_launch(work_dir, gcc_path, show_launch, stop);
     flag = flag & js.write_properties(work_dir, gcc_path, cpp_std);
     flag = flag & js.write_tasks(work_dir, gcc_path, cpp_std, show_test, optimize, warn, warn_err);
-    flag = flag & js.create_key_bind("F6", "run and pause", "cpp", "workbench.action.tasks.runTask");
+    flag = flag & js.create_key_bind("F6", "run and pause", "workbench.action.tasks.runTask", "cpp");
     if(!flag){
         ui->notice_4->setText("很抱歉\n程序生成配置文件时出现问题\n请返回重试或将问题提交至github界面\n感谢您的支持");
         ui->cnext_button_5->show();
