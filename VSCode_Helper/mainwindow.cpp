@@ -7,6 +7,8 @@
 #include "string_operator.h"
 #include <QDir>
 #include "json_operator.h"
+#include <vector>
+#include <QSettings>
 //windeployqt: 为exe链接dll的指令
 
 MainWindow::MainWindow(QWidget *parent)
@@ -24,20 +26,42 @@ MainWindow::~MainWindow()
 }
 
 
-int path_check(std::string aim_array[], int aim_num, std::string path_array[], int path_num){
-    for(int i = 0; i < path_num; i++){
+bool path_check(std::string aim_array[], int aim_num, std::vector<std::string>& path_array, std::string &path){
+    for(std::string s : path_array){
         int cnt = 0;
         for (int j = 0; j < aim_num; j++){
-            if(QFile::exists((path_array[i] + '\\' + aim_array[j]).c_str()))
+            if(s.size() > 0 && s[s.size() - 1] != '\\' && s[s.size() - 1] != '/')
+                s = s + '\\';
+            qDebug() << s;
+            if(QFile::exists((s + aim_array[j]).c_str()))
                 cnt++;
             else
                 break;
-            if(cnt == aim_num)
-                return i;
+            if(cnt == aim_num){
+                path = s;
+                return true;
+            }
         }
     }
-    return -1;
+    return false;
 }
+
+
+void get_PATH(std::vector<std::string>* path_array){
+    QSettings reg("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment", QSettings::NativeFormat);
+    QString path = reg.value("Path").toString();
+    QStringList paths = path.split(";");
+    for(QString &s : paths){
+        path_array->push_back(s.toStdString());
+    }
+    QSettings reg2("HKEY_CURRENT_USER\\Environment", QSettings::NativeFormat);
+    path = reg2.value("Path").toString();
+    paths = path.split(";");
+    for(QString &s : paths){
+        path_array->push_back(s.toStdString());
+    }
+}
+
 
 bool MainWindow::install(std::string name){
     QProcess process;
@@ -68,18 +92,17 @@ bool MainWindow::install(std::string name){
 void MainWindow::on_pushButton_clicked()
 {
     QByteArray username = qgetenv("USERNAME");
-    std::string path_arr[3];
-    path_arr[0] = "C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
-    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
-    path_arr[2] = vs_path;
+    std::vector<std::string> path_arr;
+    path_arr.push_back(vs_path);
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
     std::string aim_arr[1] = {"Code.exe"};
-    int num = path_check(aim_arr, 1, path_arr, 3);
-    if (num != -1) {
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->cnext_button_1->show();
-        vs_path = path_arr[num];
-        qDebug() << vs_path;
-        ui->notice_1->setText(QString("成功找到VS Code"));
+        ui->path_input->setText(vs_path.c_str());
+        ui->notice_1->setText(QString("已自动找到VS Code"));
         ui->stackedWidget->setCurrentIndex(1);
         return;
     } else {
@@ -109,21 +132,21 @@ void MainWindow::on_pushButton_12_clicked()
 void MainWindow::on_pushButton_10_clicked()
 {
     QByteArray username = qgetenv("USERNAME");
-    std::string path_arr[3];
-    path_arr[0] = "C:\\users\\" + QString(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
-    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
-    path_arr[2] = ui->path_input->text().toStdString();
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input->text().toStdString());
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
     std::string aim_arr[1] = {"Code.exe"};
-    int num = path_check(aim_arr, 1, path_arr, 3);
-    if (num != -1) {
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->cnext_button_1->show();
-        vs_path = path_arr[num];
-        ui->notice_1->setText(QString("成功找到VS Code"));
+        ui->notice_1->setText(QString("已自动找到VS Code"));
         return;
     } else {
         //没找到
         ui->notice_1->setText(QString("没能找到VS Code"));
+        ui->cnext_button_1->hide();
         return;
     }
 }
@@ -143,8 +166,23 @@ void MainWindow::on_cnext_button_1_clicked()
         ui->notice_1->setText(QString("插件安装失败，请检查网络连接"));
         return;
     }
-    ui->notice_2->setText(" ");
-    ui->cnext_button_2->hide();
+
+    std::vector<std::string> path_arr;
+    get_PATH(&path_arr);
+    std::string aim_arr[2];
+    aim_arr[0] = "g++.exe";
+    aim_arr[1] = "gdb.exe";
+    if (path_check(aim_arr, 2, path_arr, gcc_path)) {
+        // 找到
+        ui->cnext_button_2->show();
+        ui->path_input_2->setText(gcc_path.c_str());
+        ui->notice_2->setText(QString("已自动找到mingw编译器"));
+    } else {
+        //没找到
+        ui->notice_2->setText(" ");
+        ui->cnext_button_2->hide();
+        ui->notice_2->setText(QString("没能自动找到mingw编译器"));
+    }
     ui->stackedWidget->setCurrentIndex(2);
 }
 
@@ -166,22 +204,22 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::on_pushButton_13_clicked()
 {
-    std::string path_arr[3];
-    path_arr[0] = ui->path_input_2->text().toStdString();
-    path_arr[1] = path_arr[0] + "\\bin";
-    path_arr[2] = path_arr[0] + "\\mingw64\\bin";
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input_2->text().toStdString());
+    path_arr.push_back(path_arr[0] + "\\bin");
+    path_arr.push_back(path_arr[0] + "\\mingw64\\bin");
+    get_PATH(&path_arr);
     std::string aim_arr[2];
     aim_arr[0] = "g++.exe";
     aim_arr[1] = "gdb.exe";
-    int num = path_check(aim_arr, 2, path_arr, 3);
-    if (num != -1) {
+    if (path_check(aim_arr, 2, path_arr, gcc_path)) {
         // 找到
         ui->cnext_button_2->show();
-        gcc_path = path_arr[num];
         ui->notice_2->setText(QString("成功找到mingw编译器"));
         return;
     } else {
         //没找到
+        ui->cnext_button_2->hide();
         ui->notice_2->setText(QString("没能找到mingw编译器"));
         return;
     }
@@ -386,18 +424,17 @@ void MainWindow::on_pushButton_2_clicked()
 {
 
     QByteArray username = qgetenv("USERNAME");
-    std::string path_arr[3];
-    path_arr[0] = "C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
-    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
-    path_arr[2] = vs_path;
+    std::vector<std::string> path_arr;
+    path_arr.push_back(vs_path);
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
     std::string aim_arr[1] = {"Code.exe"};
-    int num = path_check(aim_arr, 1, path_arr, 3);
-    if (num != -1) {
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->pynext_button_1->show();
-        vs_path = path_arr[num];
-        qDebug() << vs_path;
-        ui->notice_6->setText(QString("成功找到VS Code"));
+        ui->path_input_4->setText(vs_path.c_str());
+        ui->notice_6->setText(QString("已自动找到VS Code"));
         ui->stackedWidget->setCurrentIndex(6);
         return;
     } else {
@@ -424,7 +461,7 @@ void MainWindow::on_pushButton_24_clicked()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/Microsoft VS Code",
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    ui->path_input_5->setText(dir);
+    ui->path_input_4->setText(dir);
 }
 
 
@@ -438,22 +475,29 @@ void MainWindow::on_pynext_button_1_clicked()
 void MainWindow::on_pushButton_25_clicked()
 {
     QByteArray username = qgetenv("USERNAME");
-    std::string path_arr[3];
-    path_arr[0] = "C:\\users\\" + QString(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code";
-    path_arr[1] = "D:\\Microsoft VS Code"; //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
-    path_arr[2] = ui->path_input_5->text().toStdString();
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input_4->text().toStdString());
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
     std::string aim_arr[1] = {"Code.exe"};
-    int num = path_check(aim_arr, 1, path_arr, 3);
-    if (num != -1) {
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->pynext_button_1->show();
-        vs_path = path_arr[num];
         ui->notice_6->setText(QString("成功找到VS Code"));
         return;
     } else {
         //没找到
+        ui->pynext_button_1->hide();
         ui->notice_6->setText(QString("没能找到VS Code"));
         return;
     }
+}
+
+
+void MainWindow::on_pynextButton_2_1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(8);
+
 }
 

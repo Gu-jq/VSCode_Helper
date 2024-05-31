@@ -1077,7 +1077,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_1{
+          <string notr="true">QWidget#pypic_1{
 	
 	background-image: url(:/image/image/占位图片.png);
 }</string>
@@ -1142,7 +1142,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="path_input_5"/>
+              <widget class="QLineEdit" name="path_input_4"/>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_24">
@@ -1252,7 +1252,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_1{
+          <string notr="true">QWidget#pypic_2{
 	
 	background-image: url(:/image/image/占位图片.png);
 }</string>
@@ -1372,7 +1372,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_16">
        <item>
-        <widget class="QWidget" name="pypic_4" native="true">
+        <widget class="QWidget" name="pypic_3" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1380,7 +1380,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_1{
+          <string notr="true">QWidget#pypic_3{
 	
 	background-image: url(:/image/image/占位图片.png);
 }</string>
@@ -1438,9 +1438,10 @@
              <item>
               <widget class="QLabel" name="label_38">
                <property name="text">
-                <string>下方显示的是应用自动找到的python解释器
-如果您的电脑上有多个python，希望选择其中某个
-可以通过更改下方路径进行修改和选择</string>
+                <string>如果程序没能找到解释器，您有两种解决方案
+1.若您能找到安装位置，可以手动在下方添加
+2.您可以选择卸载并重装，按照默认位置安装
+3.您可以选择卸载并重装，安装时勾选添加PATH</string>
                </property>
               </widget>
              </item>
@@ -1455,17 +1456,30 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_28">
-               <property name="text">
-                <string>尝试自动寻找另一个python</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_39">
                <property name="text">
                 <string>选择完毕后，请点击下方按钮进行检查
 如果找到了可用的解释器，便可进入下一步</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_17">
+               <property name="text">
+                <string>检查解释器</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_20">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>查找结果显示框</string>
                </property>
               </widget>
              </item>
@@ -1516,6 +1530,170 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="pypage_4_1">
+     <widget class="QWidget" name="widget_32" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>481</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_18">
+       <item>
+        <widget class="QWidget" name="pypic_4" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#pypic_4{
+	
+	background-image: url(:/image/image/占位图片.png);
+}</string>
+         </property>
+         <widget class="QLabel" name="label_40">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>101</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>应有图片：
+进度3 自定义配置</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_37" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_21">
+          <item>
+           <widget class="QWidget" name="widget_38" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_22">
+             <item>
+              <widget class="QLabel" name="label_41">
+               <property name="text">
+                <string>事实上，对于VS Code的python环境配置
+到这里就已经完成了
+基本所有的事情都已经由官方插件实现
+无需进行额外工作
+但是还有一些自定义配置
+可在下方选择是否进行调整</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_32">
+               <property name="text">
+                <string> </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_22">
+               <property name="text">
+                <string>换源：
+大部分python所用包默认下载服务器位于国外
+国内下载较慢
+通过换源可以有效提升包下载速度
+下方默认提供了清华镜像站地址
+点击按钮即可执行换源
+如果想要换到其它源，可以在下方输入</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_20">
+               <property name="text">
+                <string>执行换源</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_22">
+               <property name="text">
+                <string>出现问题，换回默认源</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string> </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_43">
+               <property name="text">
+                <string>如果希望运行过程在一个独立终端窗口进行
+可以点击下方按钮进行配置
+默认的创建任务快捷键为F6
+可以在输入框输入想要的键位(易冲突，不建议)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_3"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_28">
+               <property name="text">
+                <string>一键配置(将上方清空即可不配置快捷键)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string> </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_21">
+               <property name="text">
+                <string>返回</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1524,7 +1702,7 @@
      <x>0</x>
      <y>0</y>
      <width>480</width>
-     <height>19</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
