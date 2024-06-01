@@ -779,8 +779,13 @@ void MainWindow::on_pushButton_35_clicked()
         return;
     QProcess process;
     ui->pushButton_35->setText("正在创建，请耐心等待");
+    ui->pushButton_35->repaint();
     process.start((conda_path + "\\conda.exe").c_str(), QStringList() << "create" << "--name" << ui->name_input->text() << "python=" + ui->ver_input->text());
-    process.waitForFinished(300000);
+    if(!process.waitForReadyRead()){
+        return;
+    }
+    process.write("y\n");
+    process.waitForFinished(150000);
     std::vector<std::string> name, version, path;
     Path_operator p;
     p.get_version(&name, &path, &version, conda_path);
@@ -859,7 +864,7 @@ void MainWindow::on_pynext_button_4_2_clicked()
 void MainWindow::on_pushButton_43_clicked()
 {
     if(install("donjayamanne.python-environment-manager")){
-        ui->pushButton_37->setText("Environment Manger安装成功！");
+        ui->pushButton_43->setText("Environment Manger安装成功！");
     }
 }
 
