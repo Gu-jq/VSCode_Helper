@@ -10,6 +10,7 @@
 #include <vector>
 #include <QSettings>
 #include <QFileInfo>
+#include "path_operator.h"
 //windeployqt: 为exe链接dll的指令
 
 MainWindow::MainWindow(QWidget *parent)
@@ -284,13 +285,11 @@ void MainWindow::on_cnext_button_2_clicked()
 {
     Stringoperator op;
     QProcess process;
-    process.setProgram("cmd.exe");
-    process.setArguments(QStringList() << "/c" << ( gcc_path + "\\g++.exe --version").c_str());
-    process.start();
+    process.start((gcc_path + "\\g++.exe").c_str() , QStringList() << "--version");
     process.waitForFinished();
     QString output = process.readAllStandardOutput();
     int ver = op.get_version(output.toStdString());
-    qDebug() << QString::fromLocal8Bit(process.readAllStandardError()).toStdU16String();
+    qDebug() << output.toStdString();
     if(ver < 80000){
         ui->notice_2->setText(QString("检测到mingw编译器版本过低，您应当下载新版"));
         return;
@@ -646,6 +645,12 @@ void MainWindow::on_pynext_button_3_1_clicked()
 void MainWindow::on_pushButton_21_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert("PATH", env.value("Path") + (";" + vs_path + "\\bin").c_str());
+    process.setProcessEnvironment(env);
+    process.start("cmd.exe", QStringList() << "/c" << "code");
+    process.waitForFinished();
 }
 
 
@@ -716,13 +721,21 @@ void MainWindow::on_pushButton_32_clicked()
 
 void MainWindow::on_pushButton_34_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 
 void MainWindow::on_pynext_button_3_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(11);
+    std::vector<std::string> name, version, path;
+    Path_operator p;
+    p.get_version(&name, &path, &version, conda_path);
+    ui->listWidget->clear();
+    for(int i = 0; i < name.size(); i++){
+        std::string now = name[i] + "  (" + version[i] + ')';
+        ui->listWidget->addItem(now.c_str());
+    }
 }
 
 
@@ -743,6 +756,110 @@ void MainWindow::on_pushButton_33_clicked()
         ui->pynext_button_3_2->hide();
         ui->notice_8->setText(QString("没能找到conda"));
         return;
+    }
+}
+
+
+void MainWindow::on_pushButton_36_clicked()
+{
+    std::vector<std::string> name, version, path;
+    Path_operator p;
+    p.get_version(&name, &path, &version, conda_path);
+    ui->listWidget->clear();
+    for(int i = 0; i < name.size(); i++){
+        std::string now = name[i] + "  (" + version[i] + ')';
+        ui->listWidget->addItem(now.c_str());
+    }
+}
+
+
+void MainWindow::on_pushButton_35_clicked()
+{
+    if(ui->ver_input->text().size() <= 1 || ui->name_input->text().size() == 0)
+        return;
+    QProcess process;
+    ui->pushButton_35->setText("正在创建，请耐心等待");
+    process.start((conda_path + "\\conda.exe").c_str(), QStringList() << "create" << "--name" << ui->name_input->text() << "python=" + ui->ver_input->text());
+    process.waitForFinished(300000);
+    std::vector<std::string> name, version, path;
+    Path_operator p;
+    p.get_version(&name, &path, &version, conda_path);
+    ui->listWidget->clear();
+    for(int i = 0; i < name.size(); i++){
+        std::string now = name[i] + "  (" + version[i] + ')';
+        ui->listWidget->addItem(now.c_str());
+    }
+    ui->pushButton_35->setText("创建新python环境");
+}
+
+
+void MainWindow::on_pushButton_37_clicked()
+{
+    if(install("ms-python.debugpy")){
+        ui->pushButton_37->setText("Pylance安装成功！");
+    }
+}
+
+
+void MainWindow::on_pushButton_39_clicked()
+{
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << "python -m pip install --upgrade pip");
+    process.waitForFinished();
+    process.start("cmd.exe", QStringList() << "/c" << ("pip pip config set global.index-url " + ui->url_input_2->text()));
+    process.waitForFinished();
+}
+
+
+void MainWindow::on_pushButton_40_clicked()
+{
+    ui->url_input_2->setText("https://pypi.org/simple/");
+}
+
+
+void MainWindow::on_pushButton_41_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButton_28_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButton_42_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert("PATH", env.value("Path") + (";" + vs_path + "\\bin").c_str());
+    process.setProcessEnvironment(env);
+    process.start("cmd.exe", QStringList() << "/c" << "code");
+    process.waitForFinished();
+}
+
+
+void MainWindow::on_pushButton_38_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pynext_button_4_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(12);
+    ui->url_input_2->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    ui->key_input_2->setText("F6");
+
+}
+
+
+void MainWindow::on_pushButton_43_clicked()
+{
+    if(install("donjayamanne.python-environment-manager")){
+        ui->pushButton_37->setText("Environment Manger安装成功！");
     }
 }
 

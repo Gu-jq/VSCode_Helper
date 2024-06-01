@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QProcess>
 #include <string>
-#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -104,6 +103,28 @@ private slots:
     void on_pynext_button_3_2_clicked();
 
     void on_pushButton_33_clicked();
+
+    void on_pushButton_36_clicked();
+
+    void on_pushButton_35_clicked();
+
+    void on_pushButton_37_clicked();
+
+    void on_pushButton_39_clicked();
+
+    void on_pushButton_40_clicked();
+
+    void on_pushButton_41_clicked();
+
+    void on_pushButton_28_clicked();
+
+    void on_pushButton_42_clicked();
+
+    void on_pushButton_38_clicked();
+
+    void on_pynext_button_4_2_clicked();
+
+    void on_pushButton_43_clicked();
 
 private:
     bool install(std::string name);
