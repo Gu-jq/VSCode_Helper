@@ -95,6 +95,16 @@ private slots:
 
     void on_pynext_button_2_2_clicked();
 
+    void on_pushButton_31_clicked();
+
+    void on_pushButton_32_clicked();
+
+    void on_pushButton_34_clicked();
+
+    void on_pynext_button_3_2_clicked();
+
+    void on_pushButton_33_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;

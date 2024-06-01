@@ -675,6 +675,74 @@ void MainWindow::on_pushButton_30_clicked()
 
 void MainWindow::on_pynext_button_2_2_clicked()
 {
+    std::vector<std::string> path_arr;
+    path_arr.push_back(conda_path);
+    get_PATH(&path_arr);
+    std::string aim_arr[1];
+    aim_arr[0] = "conda.exe";
+    if (path_check(aim_arr, 1, path_arr, conda_path)) {
+        // 找到
+        ui->pynext_button_3_2->show();
+        ui->path_input_6->setText(conda_path.c_str());
+        ui->notice_8->setText(QString("成功找到conda"));
+    } else {
+        //没找到
+        ui->notice_8->setText(" ");
+        ui->pynext_button_3_2->hide();
+        ui->notice_8->setText(QString("没能找到conda"));
+    }
     ui->stackedWidget->setCurrentIndex(10);
+    return;
+
+}
+
+
+void MainWindow::on_pushButton_31_clicked()
+{
+    QUrl url("https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_32_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/conda",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_6->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_34_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
+
+void MainWindow::on_pynext_button_3_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(11);
+}
+
+
+void MainWindow::on_pushButton_33_clicked()
+{
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input_6->text().toStdString());
+    get_PATH(&path_arr);
+    std::string aim_arr[1];
+    aim_arr[0] = "conda.exe";
+    if (path_check(aim_arr, 1, path_arr, conda_path)) {
+        // 找到
+        ui->pynext_button_3_2->show();
+        ui->notice_8->setText(QString("成功找到conda"));
+        return;
+    } else {
+        //没找到
+        ui->pynext_button_3_2->hide();
+        ui->notice_8->setText(QString("没能找到conda"));
+        return;
+    }
 }
 
