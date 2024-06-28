@@ -868,7 +868,27 @@ void MainWindow::on_pushButton_43_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-
+    QByteArray username = qgetenv("USERNAME");
+    std::vector<std::string> path_arr;
+    path_arr.push_back(vs_path);
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    std::string aim_arr[1] = {"Code.exe"};
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
+        // 找到
+        ui->allnext_button_1->show();
+        ui->path_input->setText(vs_path.c_str());
+        ui->notice_5->setText(QString("已自动找到VS Code"));
+        ui->stackedWidget->setCurrentIndex(16);
+        return;
+    } else {
+        //没找到
+        ui->stackedWidget->setCurrentIndex(16);
+        ui->notice_5->setText(QString("没能自动找到VS Code"));
+        ui->allnext_button_1->hide();
+        return;
+    }
 }
 
 
@@ -904,5 +924,118 @@ void MainWindow::on_pushButton_47_clicked()
 void MainWindow::on_pushButton_48_clicked()
 {
     ui->url_input_3->setText("https://pypi.org/simple/");
+}
+
+
+void MainWindow::on_pushButton_45_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_46_clicked()
+{
+    QUrl url("https://code.visualstudio.com/Download");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_50_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/Microsoft VS Code",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_7->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_51_clicked()
+{
+    QByteArray username = qgetenv("USERNAME");
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input_7->text().toStdString());
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    std::string aim_arr[1] = {"Code.exe"};
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
+        // 找到
+        ui->allnext_button_1->show();
+        ui->notice_5->setText(QString("成功找到VS Code"));
+        return;
+    } else {
+        //没找到
+        ui->notice_5->setText(QString("没能找到VS Code"));
+        ui->allnext_button_1->hide();
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_52_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_53_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "",
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    ui->path_input_8->setText(dir);
+}
+
+
+void MainWindow::on_pushButton_56_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_allnext_button_1_clicked()
+{
+    ui->cpp_checkBox->setChecked(true);
+    ui->py_checkBox->setChecked(true);
+    ui->offline_checkBox->setChecked(true);
+    ui->stackedWidget->setCurrentIndex(17);
+    if (QFile::exists("offline-install-package.tar.gz")) {
+        // 找到
+        ui->notice_10->setText(QString("成功找到离线资源包"));
+    } else {
+        //没找到
+        ui->notice_10->setText(QString("没能找到离线资源包\n请将离线资源包放在与软件同一目录位置"));
+    }
+    ui->notice_11->setText(QString(""));
+}
+
+
+void MainWindow::on_allnext_button_2_clicked()
+{
+    if(ui->cpp_checkBox->isChecked() == false && ui->py_checkBox->isChecked() == false){
+        ui->notice_11->setText(QString("没有选择需要进行的配置"));
+        return;
+    }
+    if(ui->offline_checkBox->isChecked() == false){
+        ui->notice_11->setText(QString("在线一键通模式正在开发中\n敬请期待"));
+        return;
+    }
+    if (!QFile::exists("offline-install-package.tar.gz")) {
+        ui->notice_11->setText(QString("未找到离线资源包"));
+        return;
+    }
+    ui->stackedWidget->setCurrentIndex(18);
+    ui->notice_12->setText(QString("正在解压资源包"));
+    ui->notice_12->repaint();
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << "tar" << "-zxvf" << "offline-install-package.tar.gz");
+    process.waitForFinished();
+
+}
+
+
+void MainWindow::on_pushButton_57_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
