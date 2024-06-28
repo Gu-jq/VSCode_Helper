@@ -115,7 +115,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>即将到来</string>
+             <string>其它功能</string>
             </property>
            </widget>
           </item>
@@ -128,7 +128,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Coming soon</string>
+             <string>一键通！</string>
             </property>
            </widget>
           </item>
@@ -1597,7 +1597,7 @@
              <item>
               <widget class="QLabel" name="label_41">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1644,33 +1644,6 @@
               <widget class="QPushButton" name="pushButton_22">
                <property name="text">
                 <string>改回默认源(请在上方变化后再点击换源)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_43">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>如果希望运行过程在一个独立终端窗口进行
-可以点击下方按钮进行配置
-默认的创建任务快捷键为F6
-可以在输入框输入想要的键位(易冲突，不建议)
-尚未完成</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="key_input_1"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_28">
-               <property name="text">
-                <string>一键配置(将上方清空即可不配置快捷键)</string>
                </property>
               </widget>
              </item>
@@ -2113,14 +2086,16 @@
              <item>
               <widget class="QLabel" name="label_50">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="text">
                 <string>其余的事情VSCode的插件已经帮我们做好了
-开始体验使用VSCode的编程吧</string>
+开始体验使用VSCode的编程吧
+推荐安装Enviorment Manager并进入其它功能
+完成多版本文件夹划分</string>
                </property>
               </widget>
              </item>
@@ -2169,27 +2144,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_51">
-               <property name="text">
-                <string>如果希望运行过程在一个独立终端窗口进行
-可以点击下方按钮进行配置
-默认的创建任务快捷键为F6
-可以在输入框输入想要的键位(易冲突，不建议)
-尚未完成</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="key_input_2"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_41">
-               <property name="text">
-                <string>一键配置(将上方清空即可不配置快捷键)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="pushButton_42">
                <property name="text">
                 <string>完成</string>
@@ -2205,6 +2159,217 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="elsepage_1">
+     <widget class="QWidget" name="widget_22" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>481</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <item>
+        <widget class="QWidget" name="elsepic" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_23" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pushButton_28">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>越过VS Code限制的独立Python配置</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="pushButton_41">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Python包管理辅助</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButton_44">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Python多环境文件夹划分辅助</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="pushButton_45">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Copilot辅助</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="elsepage_2">
+     <widget class="QWidget" name="widget_49" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>481</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_24">
+       <item>
+        <widget class="QWidget" name="pypic_8" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#pypic_8{
+	
+	background-image: url(:/image/image/占位图片.png);
+}</string>
+         </property>
+         <widget class="QLabel" name="label_43">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>101</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>应有图片：
+进度3 自定义配置</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_50" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_29">
+          <item>
+           <widget class="QWidget" name="widget_51" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_30">
+             <item>
+              <widget class="QLabel" name="label_51">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>python环境配置已经完成
+下方提供了换源功能，默认填入清华源
+换源可以提升python包下载速度</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_34">
+               <property name="text">
+                <string>换源：
+大部分python所用包默认下载服务器位于国外
+国内下载较慢
+通过换源可以有效提升包下载速度
+下方默认提供了清华镜像站地址
+点击按钮即可执行换源
+如果想要换到其它源，可以在下方输入</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="url_input_3"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_47">
+               <property name="text">
+                <string>执行换源</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_48">
+               <property name="text">
+                <string>改回默认源(请在上方变化后再点击换源)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_49">
+               <property name="text">
+                <string>完成</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="elsepage_3"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

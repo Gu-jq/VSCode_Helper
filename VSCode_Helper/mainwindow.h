@@ -114,10 +114,6 @@ private slots:
 
     void on_pushButton_40_clicked();
 
-    void on_pushButton_41_clicked();
-
-    void on_pushButton_28_clicked();
-
     void on_pushButton_42_clicked();
 
     void on_pushButton_38_clicked();
@@ -126,11 +122,24 @@ private slots:
 
     void on_pushButton_43_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_28_clicked();
+
+    void on_pushButton_49_clicked();
+
+    void on_pushButton_47_clicked();
+
+    void on_pushButton_48_clicked();
+
 private:
     bool install(std::string name);
     Ui::MainWindow *ui;
     QProcess *process_code;
     std::string vs_path, gcc_path, work_dir, py_path, conda_path;
     bool find_vsc;
+    bool py_skip_vsc;
 };
 #endif // MAINWINDOW_H

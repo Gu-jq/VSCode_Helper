@@ -455,7 +455,7 @@ void MainWindow::on_cnext_button_4_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
+    py_skip_vsc = false;
     QByteArray username = qgetenv("USERNAME");
     std::vector<std::string> path_arr;
     path_arr.push_back(vs_path);
@@ -636,9 +636,14 @@ void MainWindow::on_pynext_button_3_1_clicked()
         qDebug() << "Don't have python/Scripts in PATH";
         set_PATH(path2.toStdString());
     }
-    ui->stackedWidget->setCurrentIndex(9);
-    ui->url_input_1->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
-    ui->key_input_1->setText("F6");
+    if(py_skip_vsc == false){
+        ui->stackedWidget->setCurrentIndex(9);
+        ui->url_input_1->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    }
+    else{
+        ui->stackedWidget->setCurrentIndex(14);
+        ui->url_input_3->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    }
 }
 
 
@@ -822,18 +827,6 @@ void MainWindow::on_pushButton_40_clicked()
 }
 
 
-void MainWindow::on_pushButton_41_clicked()
-{
-
-}
-
-
-void MainWindow::on_pushButton_28_clicked()
-{
-
-}
-
-
 void MainWindow::on_pushButton_42_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -854,10 +847,14 @@ void MainWindow::on_pushButton_38_clicked()
 
 void MainWindow::on_pynext_button_4_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(12);
-    ui->url_input_2->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
-    ui->key_input_2->setText("F6");
-
+    if(py_skip_vsc == false){
+        ui->stackedWidget->setCurrentIndex(12);
+        ui->url_input_2->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    }
+    else{
+        ui->stackedWidget->setCurrentIndex(14);
+        ui->url_input_3->setText("https://pypi.tuna.tsinghua.edu.cn/simple");
+    }
 }
 
 
@@ -866,5 +863,46 @@ void MainWindow::on_pushButton_43_clicked()
     if(install("donjayamanne.python-environment-manager")){
         ui->pushButton_43->setText("Environment Manger安装成功！");
     }
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(13);
+}
+
+
+void MainWindow::on_pushButton_28_clicked()
+{
+    py_skip_vsc = true;
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
+
+void MainWindow::on_pushButton_49_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_47_clicked()
+{
+    QProcess process;
+    process.start("cmd.exe", QStringList() << "/c" << "python -m pip install --upgrade pip");
+    process.waitForFinished();
+    process.start("cmd.exe", QStringList() << "/c" << ("pip pip config set global.index-url " + ui->url_input_2->text()));
+    process.waitForFinished();
+}
+
+
+void MainWindow::on_pushButton_48_clicked()
+{
+    ui->url_input_3->setText("https://pypi.org/simple/");
 }
 
