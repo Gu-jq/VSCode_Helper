@@ -285,7 +285,10 @@ void MainWindow::on_cnext_button_2_clicked()
 {
     Stringoperator op;
     QProcess process;
-    process.start((gcc_path + "\\g++.exe").c_str() , QStringList() << "--version");
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert("PATH", env.value("Path") + (";" + gcc_path).c_str());
+    process.setProcessEnvironment(env);
+    process.start("g++.exe", QStringList() << "--version");
     process.waitForFinished();
     QString output = process.readAllStandardOutput();
     int ver = op.get_version(output.toStdString());
