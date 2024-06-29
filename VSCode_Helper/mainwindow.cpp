@@ -1023,12 +1023,19 @@ void remove_temp(){
     }
 }
 
-int offline_install(QString name, std::string vs_path){
+int offline_install(QString label_name, QString name, std::string vs_path){
     QProcess process;
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     QString zip_path = "offline-install-package\\7-Zip";
     env.insert("PATH", env.value("Path") + (";" + zip_path) + + (";" + vs_path + "\\bin").c_str());
     process.setProcessEnvironment(env);
+    process.start("cmd.exe", QStringList() << "/c" << "code --list-extensions");
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    if (output.contains(label_name)){
+        qDebug() << "have this extension";
+        return 0;
+    }
     if(QFile::exists("offline-install-package\\extensions\\" + name)){
         process.start("cmd.exe", QStringList() << "/c" << "code" << "--install-extension" << "offline-install-package\\extensions\\" + name);
         if(!process.waitForFinished()){
@@ -1078,7 +1085,7 @@ void MainWindow::on_allnext_button_2_clicked()
     }
     process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\extensions.7z" << "-ooffline-install-package");
     process.waitForFinished();
-    switch(offline_install("chinese.vsix", vs_path)){
+    switch(offline_install("ms-ceintl.vscode-language-pack-zh-hans" ,"chinese.vsix", vs_path)){
     case 0:
         break;
     case 1:
@@ -1097,7 +1104,7 @@ void MainWindow::on_allnext_button_2_clicked()
     if(ui->cpp_checkBox->isChecked()){
         ui->notice_12->setText(QString("C++配置中，正在安装插件"));
         ui->notice_12->repaint();
-        switch(offline_install("cpptools.vsix", vs_path)){
+        switch(offline_install("ms-vscode.cpptools" ,"cpptools.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1111,7 +1118,7 @@ void MainWindow::on_allnext_button_2_clicked()
             remove_temp();
             return;
         }
-        switch(offline_install("pause-console.vsix", vs_path)){
+        switch(offline_install("guyutongxue.pause-console" ,"pause-console.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1128,7 +1135,7 @@ void MainWindow::on_allnext_button_2_clicked()
         ui->notice_12->setText(QString("C++配置中，正在导出C++编译器"));
         ui->notice_12->repaint();
         process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\winlibs-x86_64-posix-seh-gcc-14.1.0-mingw-w64ucrt-11.0.1-r1.7z" << "-ooffline-install-package");
-        process.waitForFinished();
+        process.waitForFinished(90000);
         QDir mingw_dir("offline-install-package\\mingw64");
         if(!mingw_dir.exists()){
             ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
@@ -1138,7 +1145,11 @@ void MainWindow::on_allnext_button_2_clicked()
         }
         QDir data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         data_dir.cdUp();
-        if(!QDir().rename(mingw_dir.path(), data_dir.path() + "//mingw64")){
+        QDir aim_dir = data_dir.path() + "//mingw64";
+        if(aim_dir.exists()){
+            aim_dir.removeRecursively();
+        }
+        if(!QDir().rename(mingw_dir.path(), aim_dir.path())){
             ui->notice_12->setText(QString("很抱歉，导出C++编译器失败\n请再次尝试\n若多次失败，请到github提交反馈"));
             ui->notice_12->repaint();
             remove_temp();
@@ -1196,7 +1207,9 @@ void MainWindow::on_allnext_button_2_clicked()
         ui->notice_12->repaint();
         env.insert("PATH", env.value("Path") + (";" + zip_path) + (";" + vs_path + "\\bin").c_str() + (";offline-install-package"));
         process.setProcessEnvironment(env);
-        process.start("cmd.exe", QStringList() << "/c" << "Miniconda3-latest-Windows-x86_64.exe" << "/AddToPath=1" << "/S" << "/D=%UserProfile%\\Miniconda3");
+        QDir data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+        data_dir.cdUp();
+        process.start("cmd.exe", QStringList() << "/c" << "Miniconda3-latest-Windows-x86_64.exe" << "/AddToPath=1" << "/S" << data_dir.path() + "\\Miniconda3");
         if(!process.waitForFinished(120000)){
             ui->notice_12->setText(QString("很抱歉，conda安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
             ui->notice_12->repaint();
@@ -1212,7 +1225,7 @@ void MainWindow::on_allnext_button_2_clicked()
         process.waitForFinished();
         ui->notice_12->setText(QString("Python配置中，正在安装插件"));
         ui->notice_12->repaint();
-        switch(offline_install("python.vsix", vs_path)){
+        switch(offline_install("ms-python.python" ,"python.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1226,7 +1239,7 @@ void MainWindow::on_allnext_button_2_clicked()
             remove_temp();
             return;
         }
-        switch(offline_install("debugpy.vsix", vs_path)){
+        switch(offline_install("ms-python.debugpy" ,"debugpy.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1240,7 +1253,7 @@ void MainWindow::on_allnext_button_2_clicked()
             remove_temp();
             return;
         }
-        switch(offline_install("pylance.vsix", vs_path)){
+        switch(offline_install("ms-python.vscode-pylance" ,"pylance.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1254,7 +1267,7 @@ void MainWindow::on_allnext_button_2_clicked()
             remove_temp();
             return;
         }
-        switch(offline_install("pythonenv.vsix", vs_path)){
+        switch(offline_install("donjayamanne.python-environment-manager" ,"pythonenv.vsix", vs_path)){
         case 0:
             break;
         case 1:
@@ -1270,53 +1283,58 @@ void MainWindow::on_allnext_button_2_clicked()
         }
         ui->notice_12->setText(QString("Python配置中，正在创建python环境"));
         ui->notice_12->repaint();
+        process.start("cmd.exe", QStringList() << "/c" << "where" << "python");
+        process.waitForFinished();
+        QStringList outlist = QString(process.readAllStandardOutput()).split("\r\n");
+        QDir conda_dir;
+        for(QString& s : outlist){
+            conda_dir = s;
+            conda_dir.cdUp();
+            if(conda_dir.dirName() == "miniconda3"){
+                break;
+            }
+        }
+        if(conda_dir.dirName() != "miniconda3"){
+            ui->notice_12->setText(QString("自动寻找miniconda失败"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
         if(ui->py36_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py306.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py306");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py306" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py306");
         }
         if(ui->py37_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py307.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py307");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py307" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py307");
         }
         if(ui->py38_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py308.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py308");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py308" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py308");
         }
         if(ui->py39_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py309.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py309");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py309" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py309");
         }
         if(ui->py310_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py310.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py310");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py310" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py310");
         }
         if(ui->py311_checkBox->isChecked()){
             process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py311.7z" << "-ooffline-install-package");
             process.waitForFinished();
             QDir pydir("offline-install-package\\Py311");
-            QString absolutePath = pydir.absolutePath();
-            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py311" << "--clone" << absolutePath);
-            process.waitForFinished(90000);
+            QDir().rename(pydir.path(), conda_dir.path() + "\\envs\\Py311");
         }
     }
     ui->notice_12->setText(QString("自动配置完成！感谢使用！"));
@@ -1324,9 +1342,11 @@ void MainWindow::on_allnext_button_2_clicked()
     remove_temp();
     if(open_with_example){
         process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code . && code " + "hello_world.cpp").c_str());
+        process.waitForFinished();
     }
     else{
         process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code .").c_str());
+        process.waitForFinished();
     }
 }
 
