@@ -20,6 +20,9 @@
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -34,6 +37,9 @@
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <widget class="QWidget" name="homepage">
      <widget class="QLabel" name="title_1">
@@ -140,13 +146,18 @@
      </widget>
     </widget>
     <widget class="QWidget" name="cpage_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#cpage_1{
+	border-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_2" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -155,35 +166,88 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_2{
+	
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QWidget" name="cpic_1" native="true">
+        <widget class="QWidget" name="widget_62" native="true">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_1{
+          <string notr="true">QWidget#widget_62{
 	
-	background-image: url(:/image/image/占位图片.png);
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度0 安装vscode</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_31">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 12pt &quot;Microsoft YaHei UI&quot;;
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>如果没有下一步按钮，说明程序没能在您的电脑上
+自动找到VS Code
+若还未下载，请点击下方按钮转至官网下载</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_9">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>转至下载网站</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>若已安装，请在下方输入您的安装路径
+您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
+右击获取其路径，粘贴并去除引号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_18">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>选择文件夹</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -194,6 +258,11 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_5{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QWidget" name="widget_6" native="true">
@@ -203,44 +272,17 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>如果没有下一步按钮，说明程序没能在您的电脑上
-自动找到VS Code
-若还未下载，请点击下方按钮转至官网下载</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_9">
-               <property name="text">
-                <string>转至下载网站</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>若已安装，请在下方输入您的安装路径
-您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
-右击获取其路径，粘贴并去除引号</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_input"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_18">
-               <property name="text">
-                <string>选择文件夹</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+               </property>
                <property name="text">
                 <string>按照默认路径安装或输入路径后，
 请点击下方按钮进行检查</string>
@@ -249,6 +291,10 @@
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_10">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+               </property>
                <property name="text">
                 <string>再次查找VS Code</string>
                </property>
@@ -261,6 +307,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                </property>
                <property name="text">
                 <string>查找结果显示框</string>
@@ -278,6 +327,9 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
               <widget class="QPushButton" name="pushButton_12">
@@ -286,6 +338,10 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                </property>
                <property name="text">
                 <string>返回</string>
@@ -300,6 +356,10 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+               </property>
                <property name="text">
                 <string>下一步</string>
                </property>
@@ -313,15 +373,37 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_61" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_61{
+	image: url(:/image/image/cpp进度0.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="cpage_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#cpage_2{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_8" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>471</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -330,9 +412,13 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QWidget" name="cpic_2" native="true">
+        <widget class="QWidget" name="widget_63" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -340,24 +426,66 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_2{
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_63{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_5">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度1 安装编译器</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_32">
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>您需要准备一个编译器来编译并运行C++程序
+在Windows系统中，常用的编译器是MinGW
+这里提供了一个足够新的版本</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_11">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>转至下载Mingw-w64</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_5">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>上面的下载不了再用这个,密码vsc</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>如果发现下载得到的文件无法打开
+您需要下载一个解压软件进行解压
+下面提供了推荐的免费解压软件7-Zip的下载链接</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_6">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>转至下载7-Zip</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -367,6 +495,11 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_9{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
@@ -379,51 +512,6 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <widget class="QLabel" name="label_6">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>您需要准备一个编译器来编译并运行C++程序
-在Windows系统中，常用的编译器是MinGW
-这里提供了一个足够新的版本</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_11">
-               <property name="text">
-                <string>转至下载Mingw-w64</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_5">
-               <property name="text">
-                <string>上面的下载不了再用这个,密码vsc</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_9">
-               <property name="text">
-                <string>如果发现下载得到的文件无法打开
-您需要下载一个解压软件进行解压
-下面提供了推荐的免费解压软件7-Zip的下载链接</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_6">
-               <property name="text">
-                <string>转至下载7-Zip</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_7">
                <property name="text">
                 <string>若已下载完毕，请解压并在下方输入对应路径
@@ -433,10 +521,17 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="path_input_2"/>
+              <widget class="QLineEdit" name="path_input_2">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_19">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>选择文件夹</string>
                </property>
@@ -452,6 +547,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_13">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>再次查找mingw</string>
                </property>
@@ -490,6 +588,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>返回</string>
                </property>
@@ -503,6 +604,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>下一步</string>
                </property>
@@ -515,6 +619,23 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="widget_64" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_64{
+	image: url(:/image/image/cpp进度0.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="cpage_3">
