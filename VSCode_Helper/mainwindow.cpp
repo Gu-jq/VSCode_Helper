@@ -878,7 +878,7 @@ void MainWindow::on_pushButton_4_clicked()
     if (path_check(aim_arr, 1, path_arr, vs_path)) {
         // 找到
         ui->allnext_button_1->show();
-        ui->path_input->setText(vs_path.c_str());
+        ui->path_input_7->setText(vs_path.c_str());
         ui->notice_5->setText(QString("已自动找到VS Code"));
         ui->stackedWidget->setCurrentIndex(16);
         return;
@@ -1009,6 +1009,37 @@ void MainWindow::on_allnext_button_1_clicked()
     ui->notice_11->setText(QString(""));
 }
 
+void remove_temp(){
+    QDir dir("offline-install-package");
+    if (dir.exists()) {
+        bool success = dir.removeRecursively();
+        if (success) {
+            qDebug() << "目录及其内容已成功删除";
+        } else {
+            qDebug() << "删除目录失败";
+        }
+    } else {
+        qDebug() << "目录不存在";
+    }
+}
+
+int offline_install(QString name, std::string vs_path){
+    QProcess process;
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    QString zip_path = "offline-install-package\\7-Zip";
+    env.insert("PATH", env.value("Path") + (";" + zip_path) + + (";" + vs_path + "\\bin").c_str());
+    process.setProcessEnvironment(env);
+    if(QFile::exists("offline-install-package\\extensions\\" + name)){
+        process.start("cmd.exe", QStringList() << "/c" << "code" << "--install-extension" << "offline-install-package\\extensions\\" + name);
+        if(!process.waitForFinished()){
+            return 1;
+        }
+        return 0;
+    }
+    else{
+        return 2;
+    }
+}
 
 void MainWindow::on_allnext_button_2_clicked()
 {
@@ -1024,13 +1055,279 @@ void MainWindow::on_allnext_button_2_clicked()
         ui->notice_11->setText(QString("未找到离线资源包"));
         return;
     }
+    Stringoperator s;
+    if(!s.check_asc(ui->path_input_8->text().toStdString()) && ui->cpp_checkBox->isChecked()){
+        ui->notice_11->setText(QString("cpp工作文件夹路径中含有非ASCII字符"));
+        return;
+    }
     ui->stackedWidget->setCurrentIndex(18);
     ui->notice_12->setText(QString("正在解压资源包"));
     ui->notice_12->repaint();
     QProcess process;
     process.start("cmd.exe", QStringList() << "/c" << "tar" << "-zxvf" << "offline-install-package.tar.gz");
     process.waitForFinished();
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    QString zip_path = "offline-install-package\\7-Zip";
+    env.insert("PATH", env.value("Path") + (";" + zip_path) + (";" + vs_path + "\\bin").c_str());
+    process.setProcessEnvironment(env);
+    if(!QFile::exists("offline-install-package\\7-Zip\\7z.exe")){
+        ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+        ui->notice_12->repaint();
+        remove_temp();
+        return;
+    }
+    process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\extensions.7z" << "-ooffline-install-package");
+    process.waitForFinished();
+    switch(offline_install("chinese.vsix", vs_path)){
+    case 0:
+        break;
+    case 1:
+        ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+        ui->notice_12->repaint();
+        remove_temp();
+        return;
+    case 2:
+        ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+        ui->notice_12->repaint();
+        remove_temp();
+        return;
+    }
 
+    bool open_with_example = false;
+    if(ui->cpp_checkBox->isChecked()){
+        ui->notice_12->setText(QString("C++配置中，正在安装插件"));
+        ui->notice_12->repaint();
+        switch(offline_install("cpptools.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        switch(offline_install("pause-console.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        ui->notice_12->setText(QString("C++配置中，正在导出C++编译器"));
+        ui->notice_12->repaint();
+        process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\winlibs-x86_64-posix-seh-gcc-14.1.0-mingw-w64ucrt-11.0.1-r1.7z" << "-ooffline-install-package");
+        process.waitForFinished();
+        QDir mingw_dir("offline-install-package\\mingw64");
+        if(!mingw_dir.exists()){
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        QDir data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+        data_dir.cdUp();
+        if(!QDir().rename(mingw_dir.path(), data_dir.path() + "//mingw64")){
+            ui->notice_12->setText(QString("很抱歉，导出C++编译器失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        gcc_path = data_dir.path().toStdString() + "//mingw64//bin";
+        QString fold_path = ui->path_input_8->text();
+        if(ui->path_input_8->text().isEmpty()){
+            fold_path = "CPP";
+        }
+        work_dir = fold_path.toStdString();
+        QDir dir;
+        if (!dir.exists(fold_path)) {
+            if(!dir.mkpath(fold_path)){
+                ui->notice_12->setText(QString("很抱歉，创建工作文件夹失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+                ui->notice_12->repaint();
+                remove_temp();
+                return;
+            }
+        }
+        ui->notice_12->setText(QString("C++配置中，正在生成配置文件"));
+        ui->notice_12->repaint();
+        Json_operator js;
+        bool flag = true;
+        flag = flag & js.write_launch(work_dir, gcc_path);
+        flag = flag & js.write_properties(work_dir, gcc_path);
+        flag = flag & js.write_tasks(work_dir, gcc_path);
+        flag = flag & js.create_key_bind("F6", "run and pause", "workbench.action.tasks.runTask", "cpp");
+        if(!flag){
+            ui->notice_12->setText(QString("很抱歉，配置文件生成失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        else{
+            QString sourceFile = ":/jsondoc/jsondoc/hello_world.cpp";
+            QString targetFile = (work_dir + "\\hello_world.cpp").c_str();
+            if(!QFile::copy(sourceFile, targetFile)){
+                ui->notice_12->setText(QString("很抱歉，示例文件生成失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+                ui->notice_12->repaint();
+                remove_temp();
+                return;
+            }
+        }
+        open_with_example = true;
+    }
+    if(ui->py_checkBox->isChecked()){
+        if(!QFile::exists("offline-install-package\\Miniconda3-latest-Windows-x86_64.exe")){
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        ui->notice_12->setText(QString("Python配置中，正在安装conda"));
+        ui->notice_12->repaint();
+        env.insert("PATH", env.value("Path") + (";" + zip_path) + (";" + vs_path + "\\bin").c_str() + (";offline-install-package"));
+        process.setProcessEnvironment(env);
+        process.start("cmd.exe", QStringList() << "/c" << "Miniconda3-latest-Windows-x86_64.exe" << "/AddToPath=1" << "/S" << "/D=%UserProfile%\\Miniconda3");
+        if(!process.waitForFinished(120000)){
+            ui->notice_12->setText(QString("很抱歉，conda安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        env = QProcessEnvironment::systemEnvironment();
+        env.insert("PATH", env.value("Path") + (";" + zip_path) + (";" + vs_path + "\\bin").c_str());
+        process.setProcessEnvironment(env);
+        process.start("cmd.exe", QStringList() << "/c" << "python -m pip install --upgrade pip");
+        process.waitForFinished();
+        process.start("cmd.exe", QStringList() << "/c" << ("pip pip config set global.index-url " + ui->url_input_2->text()));
+        process.waitForFinished();
+        ui->notice_12->setText(QString("Python配置中，正在安装插件"));
+        ui->notice_12->repaint();
+        switch(offline_install("python.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        switch(offline_install("debugpy.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        switch(offline_install("pylance.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        switch(offline_install("pythonenv.vsix", vs_path)){
+        case 0:
+            break;
+        case 1:
+            ui->notice_12->setText(QString("很抱歉，插件安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        case 2:
+            ui->notice_12->setText(QString("很抱歉，资源包解压失败\n请再次尝试\n若多次失败，请到github提交反馈"));
+            ui->notice_12->repaint();
+            remove_temp();
+            return;
+        }
+        ui->notice_12->setText(QString("Python配置中，正在创建python环境"));
+        ui->notice_12->repaint();
+        if(ui->py36_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py306.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py306");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py306" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+        if(ui->py37_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py307.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py307");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py307" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+        if(ui->py38_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py308.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py308");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py308" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+        if(ui->py39_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py309.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py309");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py309" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+        if(ui->py310_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py310.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py310");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py310" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+        if(ui->py311_checkBox->isChecked()){
+            process.start("cmd.exe", QStringList() << "/c" << "7z" << "x" <<"offline-install-package\\Py311.7z" << "-ooffline-install-package");
+            process.waitForFinished();
+            QDir pydir("offline-install-package\\Py311");
+            QString absolutePath = pydir.absolutePath();
+            process.start("cmd.exe", QStringList() << "/c" << "conda" << "env" <<"create" << "-n" << "Py311" << "--clone" << absolutePath);
+            process.waitForFinished(90000);
+        }
+    }
+    ui->notice_12->setText(QString("自动配置完成！感谢使用！"));
+    ui->notice_12->repaint();
+    remove_temp();
+    if(open_with_example){
+        process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code . && code " + "hello_world.cpp").c_str());
+    }
+    else{
+        process.start("cmd.exe", QStringList() << "/c" << ("cd /d " + work_dir + "&& code .").c_str());
+    }
 }
 
 
