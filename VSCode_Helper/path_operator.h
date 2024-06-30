@@ -20,6 +20,9 @@ public:
         for(QString& s : list){
             if(s.size() == 0)
                 continue;
+            if(s != "#" && s != "conda" && s != "environments:" && s[1] != ':'){
+                cnt = 4;
+            }
             if(cnt < 4){
                 cnt++;
                 continue;
