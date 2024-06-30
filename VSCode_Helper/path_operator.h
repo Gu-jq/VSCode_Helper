@@ -27,14 +27,18 @@ public:
                 cnt++;
                 continue;
             }
-            else if(cnt == 4){
+            if(cnt == 4 && (s == "#" || s == "conda" || s == "environments:" || s[1] == ':')){
+                cnt--;
+                continue;
+            }
+            if(cnt == 4){
                 name->push_back(s.toStdString());
                 cnt = 5;
             }
             else if(cnt == 5){
                 path->push_back(s.toStdString());
                 QProcess process2;
-                process2.start(s + "\\python.exe", QStringList() << "--version");
+                process2.start("cmd", QStringList() << "/c" << (s + "\\python.exe") << "--version");
                 process2.waitForFinished();
                 QString ver = process2.readAllStandardOutput().trimmed();
                 version->push_back(ver.toStdString());

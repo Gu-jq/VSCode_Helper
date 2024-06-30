@@ -1048,7 +1048,7 @@ int offline_install(QString label_name, QString name, std::string vs_path){
     }
     if(QFile::exists("offline-install-package\\extensions\\" + name)){
         process.start("cmd.exe", QStringList() << "/c" << "code" << "--install-extension" << "offline-install-package\\extensions\\" + name);
-        if(!process.waitForFinished()){
+        if(!process.waitForFinished(30000)){
             return 1;
         }
         return 0;
@@ -1219,7 +1219,7 @@ void MainWindow::on_allnext_button_2_clicked()
         process.setProcessEnvironment(env);
         QDir data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
         data_dir.cdUp();
-        process.start("cmd.exe", QStringList() << "/c" << "Miniconda3-latest-Windows-x86_64.exe" << "/AddToPath=1" << "/S" << data_dir.path() + "\\Miniconda3");
+        process.start("cmd.exe", QStringList() << "/c" << "Miniconda3-latest-Windows-x86_64.exe" << "/AddToPath=1" << "/S" << data_dir.path() + "\\miniconda3");
         if(!process.waitForFinished(120000)){
             ui->notice_12->setText(QString("很抱歉，conda安装失败\n请再次尝试\n若多次失败，请到github提交反馈"));
             ui->notice_12->repaint();
@@ -1293,19 +1293,40 @@ void MainWindow::on_allnext_button_2_clicked()
         }
         ui->notice_12->setText(QString("Python配置中，正在创建python环境"));
         ui->notice_12->repaint();
-        process.start("cmd.exe", QStringList() << "/c" << "where" << "python");
-        process.waitForFinished();
-        QStringList outlist = QString(process.readAllStandardOutput()).split("\r\n");
+        QProcess n_process;
+        n_process.start("cmd.exe", QStringList() << "/c" << "echo %PATH%");
+        n_process.waitForFinished();
+        QString out = n_process.readAllStandardOutput();
+        QStringList outlist = out.split(";");
+        QDir check_dir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "\\miniconda3";
+        if(check_dir.exists()){
+            outlist.push_back(check_dir.path());
+        }
+        check_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "\\miniconda3";
+        if(check_dir.exists()){
+            outlist.push_back(check_dir.path());
+        }
         QDir conda_dir;
         for(QString& s : outlist){
             conda_dir = s;
+            if(conda_dir.dirName() == "miniconda3"){
+                break;
+            }
+            conda_dir.cdUp();
+            if(conda_dir.dirName() == "miniconda3"){
+                break;
+            }
+            conda_dir.cdUp();
+            if(conda_dir.dirName() == "miniconda3"){
+                break;
+            }
             conda_dir.cdUp();
             if(conda_dir.dirName() == "miniconda3"){
                 break;
             }
         }
         if(conda_dir.dirName() != "miniconda3"){
-            ui->notice_12->setText(QString("自动寻找miniconda失败"));
+            ui->notice_12->setText("自动寻找miniconda3失败，请重试或至github提交反馈");
             ui->notice_12->repaint();
             remove_temp();
             return;
