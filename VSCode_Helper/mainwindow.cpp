@@ -288,7 +288,7 @@ void MainWindow::on_cnext_button_2_clicked()
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("PATH", env.value("Path") + (";" + gcc_path).c_str());
     process.setProcessEnvironment(env);
-    process.start("g++.exe", QStringList() << "--version");
+    process.start("cmd", QStringList() <<"/c" << "g++.exe" << "--version");
     process.waitForFinished();
     QString output = process.readAllStandardOutput();
     int ver = op.get_version(output.toStdString());
@@ -508,6 +508,8 @@ void MainWindow::on_pushButton_24_clicked()
 
 void MainWindow::on_pynext_button_1_clicked()
 {
+    ui->notice_6->setText(QString("正在安装插件，请稍后"));
+    ui->notice_6->repaint();
     if(!install("ms-ceintl.vscode-language-pack-zh-hans")){
         ui->notice_6->setText(QString("插件安装失败，请检查网络连接"));
         return;
@@ -755,6 +757,7 @@ void MainWindow::on_pushButton_33_clicked()
 {
     std::vector<std::string> path_arr;
     path_arr.push_back(ui->path_input_6->text().toStdString());
+    path_arr.push_back(ui->path_input_6->text().toStdString() + "\\Scripts");
     get_PATH(&path_arr);
     std::string aim_arr[1];
     aim_arr[0] = "conda.exe";
