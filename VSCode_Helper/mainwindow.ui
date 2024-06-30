@@ -42,38 +42,47 @@
      <string notr="true"/>
     </property>
     <widget class="QWidget" name="homepage">
+     <property name="styleSheet">
+      <string notr="true">QWidget#homepage{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QLabel" name="title_1">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>0</y>
-        <width>371</width>
-        <height>31</height>
+        <width>801</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel#title_1{
 	
-	font: 290 18pt &quot;Microsoft YaHei UI Light&quot;;
+	background-color: rgba(255, 255, 255, 150);
+	
+	font: 290 24pt &quot;Microsoft YaHei&quot;;
 }</string>
       </property>
       <property name="text">
-       <string>Visual Studio Code 小帮手</string>
+       <string>   Visual Studio Code 小帮手</string>
       </property>
      </widget>
      <widget class="QWidget" name="widget" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>40</y>
-        <width>481</width>
+        <y>50</y>
+        <width>801</width>
         <height>421</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget{
+background-color: rgba(255, 255, 255, 150);
+}</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QWidget" name="homepic" native="true"/>
-       </item>
        <item>
         <widget class="QWidget" name="widget_3" native="true">
          <property name="sizePolicy">
@@ -82,40 +91,66 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+         </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="pushButton">
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButton_3">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: rgba(255, 255, 255, 150);
+image: url(:/image/image/other.png);</string>
             </property>
             <property name="text">
-             <string>C++配置</string>
+             <string/>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="pushButton_2">
+          <item row="1" column="2">
+           <widget class="QPushButton" name="pushButton_4">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);
+image: url(:/image/image/mouse.png);</string>
+            </property>
             <property name="text">
-             <string>Python配置</string>
+             <string/>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="pushButton_3">
+          <item row="0" column="2">
+           <widget class="QPushButton" name="pushButton_2">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/image/image/py.png);
+background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="label_10">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -125,17 +160,60 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="pushButton_4">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pushButton">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/image/image/cpp.png);
+background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>C++配置</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label_15">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Python配置</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="label_16">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="text">
              <string>一键通！
-支持离线配置！</string>
+离线配置</string>
             </property>
            </widget>
           </item>
@@ -955,13 +1033,18 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="cpage_5">
+     <property name="styleSheet">
+      <string notr="true">QWidget#cpage_5{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_18" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>471</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -970,34 +1053,102 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QWidget" name="cpic_5" native="true">
+        <widget class="QWidget" name="widget_74" native="true">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#cpic_5{
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_74{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_16">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度3 配置设置</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_36">
+          <item>
+           <widget class="QCheckBox" name="checkBox_launch1">
+            <property name="text">
+             <string>调试时不启用独立终端，使用VSCode自带终端</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_test1">
+            <property name="text">
+             <string>运行时不启用独立终端，使用VSCode自带终端</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_launch2">
+            <property name="text">
+             <string>调试时在程序入口处停止</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>使用的C++标准：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_cppstd">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>c++17</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++20</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++23</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++98</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++03</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>c++14</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1007,6 +1158,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_19{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
@@ -1018,79 +1174,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_10">
-             <item>
-              <widget class="QCheckBox" name="checkBox_launch1">
-               <property name="text">
-                <string>调试时不启用独立终端，使用VSCode自带终端</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_test1">
-               <property name="text">
-                <string>运行时不启用独立终端，使用VSCode自带终端</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_launch2">
-               <property name="text">
-                <string>调试时在程序入口处停止</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_17">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>使用的C++标准：</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_cppstd">
-               <item>
-                <property name="text">
-                 <string>c++17</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++20</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++23</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++98</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++03</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++11</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>c++14</string>
-                </property>
-               </item>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_18">
                <property name="sizePolicy">
@@ -1106,6 +1189,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QComboBox" name="comboBox_optimize">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <item>
                 <property name="text">
                  <string>0</string>
@@ -1143,6 +1229,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QComboBox" name="comboBox_warn">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <item>
                 <property name="text">
                  <string>默认</string>
@@ -1199,6 +1288,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+                  </property>
                   <property name="text">
                    <string>返回</string>
                   </property>
@@ -1211,6 +1303,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                   </property>
                   <property name="text">
                    <string>生成配置文件</string>
@@ -1228,15 +1323,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_73" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_73{
+	image: url(:/image/image/cpp进度3.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_1{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_4" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1245,9 +1363,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_12">
        <item>
-        <widget class="QWidget" name="pypic_1" native="true">
+        <widget class="QWidget" name="widget_75" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1255,25 +1377,57 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_1{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_75{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_24">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度0 安装vscode</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_38">
+          <item>
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>如果没有下一步按钮，说明程序没能在您的电脑上
+自动找到VS Code
+若还未下载，请点击下方按钮转至官网下载</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_23">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>转至下载网站</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>若已安装，请在下方输入您的安装路径
+您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
+右击获取其路径，粘贴并去除引号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_24">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>选择文件夹</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1283,6 +1437,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_25{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_13">
           <item>
@@ -1295,41 +1454,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_14">
              <item>
-              <widget class="QLabel" name="label_25">
-               <property name="text">
-                <string>如果没有下一步按钮，说明程序没能在您的电脑上
-自动找到VS Code
-若还未下载，请点击下方按钮转至官网下载</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_23">
-               <property name="text">
-                <string>转至下载网站</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_26">
-               <property name="text">
-                <string>若已安装，请在下方输入您的安装路径
-您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
-右击获取其路径，粘贴并去除引号</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_input_4"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_24">
-               <property name="text">
-                <string>选择文件夹</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_27">
                <property name="text">
                 <string>按照默认路径安装或输入路径后，
@@ -1339,6 +1463,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_25">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>再次查找VS Code</string>
                </property>
@@ -1377,6 +1504,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>返回</string>
                </property>
@@ -1389,6 +1519,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                </property>
                <property name="text">
                 <string>下一步</string>
@@ -1403,15 +1536,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_76" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_76{
+	image: url(:/image/image/py进度0.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_2{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_28" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1420,9 +1576,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_14">
        <item>
-        <widget class="QWidget" name="pypic_2" native="true">
+        <widget class="QWidget" name="widget_78" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1430,25 +1590,52 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_2{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_78{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_28">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度1 选择配置方法</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_39">
+          <item>
+           <widget class="QLabel" name="label_29">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>python的配置有以下两个选项
+请根据您的需求选择</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_30">
+            <property name="text">
+             <string>★直接使用python自带管理方法
+优势：体积小巧使用便捷
+缺点：多版本管理困难(此处仅提供单版本配置)
+不推荐(只简单使用，则推荐)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pynext_button_2_1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>直接使用python</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1458,6 +1645,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_29{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_15">
           <item>
@@ -1470,33 +1662,16 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_16">
              <item>
-              <widget class="QLabel" name="label_29">
-               <property name="text">
-                <string>python的配置有以下两个选项
-请根据您的需求选择</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_30">
-               <property name="text">
-                <string>★直接使用python自带管理方法
-优势：体积小巧使用便捷
-缺点：多版本管理困难(此处仅提供单版本配置)
-不推荐(只简单使用，则推荐)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pynext_button_2_1">
+              <widget class="QLabel" name="label_24">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>直接使用python</string>
+                <string>
+</string>
                </property>
               </widget>
              </item>
@@ -1513,10 +1688,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              <item>
               <widget class="QPushButton" name="pynext_button_2_2">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                </property>
                <property name="text">
                 <string>使用conda管理python</string>
@@ -1531,15 +1709,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_77" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_77{
+	image: url(:/image/image/py进度1.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_3_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_3_1{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_31" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>381</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1548,9 +1749,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_16">
        <item>
-        <widget class="QWidget" name="pypic_3" native="true">
+        <widget class="QWidget" name="widget_79" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1558,25 +1763,57 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_3{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_79{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_36">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度2 安装python</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_40">
+          <item>
+           <widget class="QLabel" name="label_37">
+            <property name="text">
+             <string>python程序的运行基于python解释器
+如果无下一步按钮，说明程序没能找到python解释器
+您可以点击下方按钮前往官网进行下载</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_8">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>下载官方python解释器</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_38">
+            <property name="text">
+             <string>如果程序没能找到解释器，您有两种解决方案
+1.若您能找到安装位置，可以手动在下方添加
+2.您可以选择卸载并重装，安装时勾选添加PATH</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input_5">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_27">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>选择文件夹</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1586,6 +1823,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_34{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_19">
           <item>
@@ -1598,41 +1840,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_20">
              <item>
-              <widget class="QLabel" name="label_37">
-               <property name="text">
-                <string>python程序的运行基于python解释器
-如果无下一步按钮，说明程序没能找到python解释器
-您可以点击下方按钮前往官网进行下载</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_8">
-               <property name="text">
-                <string>下载官方python解释器</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_38">
-               <property name="text">
-                <string>如果程序没能找到解释器，您有两种解决方案
-1.若您能找到安装位置，可以手动在下方添加
-2.您可以选择卸载并重装，安装时勾选添加PATH</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_input_5"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_27">
-               <property name="text">
-                <string>选择文件夹</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_39">
                <property name="text">
                 <string>选择或安装完毕后，请点击下方按钮进行检查
@@ -1642,6 +1849,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_17">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>检查解释器</string>
                </property>
@@ -1677,6 +1887,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+                  </property>
                   <property name="text">
                    <string>返回</string>
                   </property>
@@ -1689,6 +1902,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                   </property>
                   <property name="text">
                    <string>下一步</string>
@@ -1706,15 +1922,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_80" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_80{
+	image: url(:/image/image/py进度2.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_4_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_4_1{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_32" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1723,9 +1962,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_18">
        <item>
-        <widget class="QWidget" name="pypic_4" native="true">
+        <widget class="QWidget" name="widget_83" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1733,25 +1976,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_4{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_83{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_40">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度3 自定义配置</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_42">
+          <item>
+           <widget class="QLabel" name="label_41">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>对于VS Code的python环境配置已经完成
+其余工作已由官方插件实现
+不过下面有一些自定义配置
+可在下方选择是否进行调整</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_30">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>推荐安装Pylance，点击即可</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1761,6 +2017,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_37{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_21">
           <item>
@@ -1772,29 +2033,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_22">
-             <item>
-              <widget class="QLabel" name="label_41">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>对于VS Code的python环境配置已经完成
-其余工作已由官方插件实现
-不过下面有一些自定义配置
-可在下方选择是否进行调整</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_30">
-               <property name="text">
-                <string>推荐安装Pylance，点击即可</string>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_22">
                <property name="text">
@@ -1809,10 +2047,17 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="url_input_1"/>
+              <widget class="QLineEdit" name="url_input_1">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_20">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>执行换源</string>
                </property>
@@ -1820,6 +2065,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_22">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>改回默认源(请在上方变化后再点击换源)</string>
                </property>
@@ -1827,6 +2075,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_21">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>完成</string>
                </property>
@@ -1840,15 +2091,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_82" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_82{
+	image: url(:/image/image/py进度5.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_3_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_3_2{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_33" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -1857,9 +2131,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_19">
        <item>
-        <widget class="QWidget" name="pypic_5" native="true">
+        <widget class="QWidget" name="widget_86" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -1867,25 +2145,56 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_5{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_86{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_42">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度2 安装conda</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_41">
+          <item>
+           <widget class="QLabel" name="label_44">
+            <property name="text">
+             <string>你需要miniconda或anaconda中的conda
+如果无下一步按钮，说明程序没能找到conda
+您可以点击下方按钮前往下载miniconda</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_31">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>下载miniconda</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_45">
+            <property name="text">
+             <string>如果是程序没能找到conda，您可以在下方
+手动输入或选择conda所在位置</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input_6">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_32">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>选择文件夹</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -1895,6 +2204,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_39{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_23">
           <item>
@@ -1907,40 +2221,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_24">
              <item>
-              <widget class="QLabel" name="label_44">
-               <property name="text">
-                <string>你需要miniconda或anaconda中的conda
-如果无下一步按钮，说明程序没能找到conda
-您可以点击下方按钮前往下载miniconda</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_31">
-               <property name="text">
-                <string>下载miniconda</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_45">
-               <property name="text">
-                <string>如果是程序没能找到conda，您可以在下方
-手动输入或选择conda所在位置</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_input_6"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_32">
-               <property name="text">
-                <string>选择文件夹</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_46">
                <property name="text">
                 <string>选择或安装完毕后，请点击下方按钮进行检查
@@ -1950,6 +2230,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_33">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>检查conda</string>
                </property>
@@ -1985,6 +2268,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+                  </property>
                   <property name="text">
                    <string>返回</string>
                   </property>
@@ -1997,6 +2283,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                   </property>
                   <property name="text">
                    <string>下一步</string>
@@ -2014,15 +2303,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_81" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_81{
+	image: url(:/image/image/py进度2.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_4_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_4_2{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_42" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>800</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -2031,9 +2343,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_21">
        <item>
-        <widget class="QWidget" name="pypic_6" native="true">
+        <widget class="QWidget" name="widget_87" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -2041,25 +2357,61 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_6{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_87{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_47">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度3 安装python环境</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_43">
+          <item>
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>请在此处输入您需要安装的python的版本号
+格式应为a.b.c或a.b(如3.10.11或3.12)
+注意切换英文输入法</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="ver_input">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_48">
+            <property name="text">
+             <string>您可以创建多个python版本
+右方会显示程序捕获到的当前所有版本</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>请在此处输入您需要的环境名称
+推荐使用Py+版本号前两个数,如Py307</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="name_input">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_35">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>创建新python环境</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -2069,6 +2421,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_43{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_25">
           <item>
@@ -2080,44 +2437,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_26">
-             <item>
-              <widget class="QLabel" name="label_48">
-               <property name="text">
-                <string>接下来，您可以创建多个python版本
-下方会显示程序捕获到的当前所有版本</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_21">
-               <property name="text">
-                <string>请在此处输入您需要安装的python的版本号
-格式应为a.b.c或a.b(如3.10.11或3.12)
-注意切换英文输入法</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="ver_input"/>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_23">
-               <property name="text">
-                <string>请在此处输入您需要的环境名称
-推荐使用Py+版本号前两个数,如Py307</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="name_input"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_35">
-               <property name="text">
-                <string>创建新python环境</string>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="notice_9">
                <property name="text">
@@ -2133,10 +2452,16 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_36">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>检测列表更新</string>
                </property>
@@ -2166,6 +2491,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+                  </property>
                   <property name="text">
                    <string>返回</string>
                   </property>
@@ -2178,6 +2506,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                   </property>
                   <property name="text">
                    <string>下一步</string>
@@ -2195,15 +2526,38 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_84" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_84{
+	image: url(:/image/image/py进度3.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pypage_5_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#pypage_5_2{
+	
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_46" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>401</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -2212,9 +2566,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_23">
        <item>
-        <widget class="QWidget" name="pypic_7" native="true">
+        <widget class="QWidget" name="widget_88" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -2222,25 +2580,48 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#pypic_7{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_88{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_49">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度4 自定义配置</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_44">
+          <item>
+           <widget class="QLabel" name="label_50">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>其余的事情VSCode的插件已经帮我们做好了
+开始体验使用VSCode的编程吧
+推荐安装Enviorment Manager并进入其它功能
+完成多版本文件夹划分</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_37">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>推荐安装Pylance，点击即可</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_43">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>推荐安装Enviorment Manager，点击即可</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -2250,6 +2631,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_47{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_27">
           <item>
@@ -2261,36 +2647,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_28">
-             <item>
-              <widget class="QLabel" name="label_50">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>其余的事情VSCode的插件已经帮我们做好了
-开始体验使用VSCode的编程吧
-推荐安装Enviorment Manager并进入其它功能
-完成多版本文件夹划分</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_37">
-               <property name="text">
-                <string>推荐安装Pylance，点击即可</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_43">
-               <property name="text">
-                <string>推荐安装Enviorment Manager，点击即可</string>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_33">
                <property name="text">
@@ -2305,10 +2661,17 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="url_input_2"/>
+              <widget class="QLineEdit" name="url_input_2">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_39">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>执行换源</string>
                </property>
@@ -2316,6 +2679,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_40">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>改回默认源(请在上方变化后再点击换源)</string>
                </property>
@@ -2323,6 +2689,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_42">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>完成</string>
                </property>
@@ -2336,21 +2705,44 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="widget_85" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>390</y>
+        <width>801</width>
+        <height>75</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#widget_85{
+	image: url(:/image/image/py进度5.png);
+    
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="elsepage_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#elsepage_1{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_22" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>30</y>
-        <width>481</width>
-        <height>421</height>
+        <y>-10</y>
+        <width>801</width>
+        <height>461</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 18pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_10">
-       <item>
-        <widget class="QWidget" name="elsepic" native="true"/>
-       </item>
        <item>
         <widget class="QWidget" name="widget_23" native="true">
          <property name="sizePolicy">
@@ -2369,10 +2761,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: rgba(255, 255, 255, 175);</string>
             </property>
             <property name="text">
-             <string>越过VS Code限制的独立Python配置</string>
+             <string>越过VS Code限制的
+独立Python配置</string>
             </property>
            </widget>
           </item>
@@ -2384,8 +2777,12 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 175);</string>
+            </property>
             <property name="text">
-             <string>Python Enviorment Manager使用说明</string>
+             <string>Python Enviorment Manager
+使用说明</string>
             </property>
            </widget>
           </item>
@@ -2397,8 +2794,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 175);</string>
+            </property>
             <property name="text">
-             <string>Copilot辅助</string>
+             <string>Copilot使用辅助</string>
             </property>
            </widget>
           </item>
@@ -2409,6 +2809,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 175);</string>
             </property>
             <property name="text">
              <string>返回上一页
@@ -2423,12 +2826,17 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="elsepage_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#elsepage_2{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_49" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
+        <width>801</width>
         <height>461</height>
        </rect>
       </property>
@@ -2437,6 +2845,10 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_24">
        <item>
@@ -2449,24 +2861,26 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QWidget#pypic_8{
-	
-	background-image: url(:/image/image/占位图片.png);
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_43">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度3 自定义配置</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_47">
+          <item>
+           <widget class="QLabel" name="label_51">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>python环境配置已经完成
+右方提供了换源功能，默认填入清华源
+换源可以提升python包下载速度</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -2476,6 +2890,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_50{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_29">
           <item>
@@ -2487,21 +2906,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </sizepolicy>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_30">
-             <item>
-              <widget class="QLabel" name="label_51">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>python环境配置已经完成
-下方提供了换源功能，默认填入清华源
-换源可以提升python包下载速度</string>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_34">
                <property name="text">
@@ -2516,10 +2920,17 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="url_input_3"/>
+              <widget class="QLineEdit" name="url_input_3">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_47">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>执行换源</string>
                </property>
@@ -2527,6 +2938,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_48">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>改回默认源(请在上方变化后再点击换源)</string>
                </property>
@@ -2534,6 +2948,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_49">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>完成</string>
                </property>
@@ -2548,14 +2965,18 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="elsepage_3"/>
-    <widget class="QWidget" name="allpage_1">
-     <widget class="QWidget" name="widget_24" native="true">
+    <widget class="QWidget" name="elsepage_3">
+     <property name="styleSheet">
+      <string notr="true">QWidget#elsepage_3{
+	background-image: url(:/image/image/background.png);
+}</string>
+     </property>
+     <widget class="QWidget" name="widget_91" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
+        <width>801</width>
         <height>461</height>
        </rect>
       </property>
@@ -2565,9 +2986,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_11">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_30">
        <item>
-        <widget class="QWidget" name="allpic_1" native="true">
+        <widget class="QWidget" name="pypic_9" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -2575,25 +3000,178 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#allpic_1{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#pypic_9{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_20">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度0 安装vscode</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_48">
+          <item>
+           <widget class="QLabel" name="label_54">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Python Enviorment Manager是一个基于文件夹&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;对Python进行版本自动管理和激活的插件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;你需要在一个大的工作区下分出多个子文件夹&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;如果此前只是基于文件夹而非工作区进行工作，会自动创建新工作区&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;注意：工作区层级高于原先文件夹，新子文件夹与原文件夹平级&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;您需要先将子文件夹加入到工作区(直接创建是不行的)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;具体而言，点击左上方文件，下拉菜单中选择“将文件夹添加到工作区”&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;然后选中新建的新文件夹即可&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;然后点击右侧的Python形状图标&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;在下方点击需要使用的环境&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;再在上方选择需要修改环境的工作区子文件夹&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;此后，只要启动此子文件夹下的py程序&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;都会自动激活对应的Python版本&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_92" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_92{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_49">
+          <item>
+           <widget class="QWidget" name="widget_93" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_50">
+             <item>
+              <widget class="QLabel" name="label_57">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;你可以在左侧找到“插件”功能&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;点击进入后，找到Python Enviorment Manager插件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;在插件介绍内也有带图片的详细使用说明&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;您亦可点击下方按钮到达插件商店页面&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;页面下介绍也有清晰的使用方法说明&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_64">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+               <property name="text">
+                <string>跳转到插件页面</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_63">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+               <property name="text">
+                <string>返回</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="allpage_1">
+     <property name="styleSheet">
+      <string notr="true">QWidget#allpage_1{
+	border-image: url(:/image/image/background.png);
+}</string>
+     </property>
+     <widget class="QWidget" name="widget_24" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>801</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <item>
+        <widget class="QWidget" name="widget_89" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_89{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_45">
+          <item>
+           <widget class="QLabel" name="label_35">
+            <property name="text">
+             <string>如果没有下一步按钮，说明程序没能在您的电脑上
+自动找到VS Code
+若还未下载，请点击下方按钮转至官网下载</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_46">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>转至下载网站</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_52">
+            <property name="text">
+             <string>若已安装，请在下方输入您的安装路径
+您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
+右击获取其路径，粘贴并去除引号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input_7">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_50">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>选择文件夹</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -2603,6 +3181,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_52{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
@@ -2615,41 +3198,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <item>
-              <widget class="QLabel" name="label_35">
-               <property name="text">
-                <string>如果没有下一步按钮，说明程序没能在您的电脑上
-自动找到VS Code
-若还未下载，请点击下方按钮转至官网下载</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_46">
-               <property name="text">
-                <string>转至下载网站</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_52">
-               <property name="text">
-                <string>若已安装，请在下方输入您的安装路径
-您需要找到名为&quot;Microsoft VS Code&quot;的文件夹
-右击获取其路径，粘贴并去除引号</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_input_7"/>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_50">
-               <property name="text">
-                <string>选择文件夹</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="label_53">
                <property name="text">
                 <string>按照默认路径安装或输入路径后，
@@ -2659,6 +3207,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
              </item>
              <item>
               <widget class="QPushButton" name="pushButton_51">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>再次查找VS Code</string>
                </property>
@@ -2688,6 +3239,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
               <widget class="QPushButton" name="pushButton_52">
@@ -2696,6 +3250,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                </property>
                <property name="text">
                 <string>返回</string>
@@ -2710,200 +3267,8 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <property name="text">
-                <string>下一步</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="co_page">
-     <widget class="QWidget" name="widget_65" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>801</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget#widget_2{
-	
-	background-color: rgba(255, 255, 255, 0);
-}</string>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_28">
-       <item>
-        <widget class="QWidget" name="widget_66" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget#widget_62{
-	
-	background-color: rgba(255, 255, 255, 150);
-}</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_33">
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="styleSheet">
-             <string notr="true">QLabel{
-	
-	font: 12pt &quot;Microsoft YaHei UI&quot;;
-	background-color: rgba(255, 255, 255, 0);
-}</string>
-            </property>
-            <property name="text">
-             <string>首先我们在VS CODE上下载copilot插件</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_54">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 200);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-            </property>
-            <property name="text">
-             <string>点击下载插件</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_58">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;接下来我们需要进行GitHub的学生认证&lt;/p&gt;&lt;p&gt;如果没有注册过GitHub请先注册账号，并如实完善个人信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_55">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 200);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-            </property>
-            <property name="text">
-             <string>点击进入GitHub注册界面</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget_67" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget#widget_5{
-	background-color: rgba(255, 255, 255, 150);
-}</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_34">
-          <item>
-           <widget class="QWidget" name="widget_68" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QWidget{
-	background-color: rgba(255, 255, 255, 0);
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_35">
-             <item>
-              <widget class="QLabel" name="label_59">
                <property name="styleSheet">
-                <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-               </property>
-               <property name="text">
-                <string>点击下方进入学生认证界面，准备好相应的材料并拍照上传。</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_58">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 255, 255, 200);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-               </property>
-               <property name="text">
-                <string>点击进入学生认证</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="widget_69" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_29">
-             <item>
-              <widget class="QPushButton" name="pushButton_59">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 255, 255, 200);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
-               </property>
-               <property name="text">
-                <string>返回</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="cnext_button_7">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 255, 255, 200);
-font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                </property>
                <property name="text">
                 <string>下一步</string>
@@ -2920,13 +3285,18 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="allpage_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#allpage_2{
+	border-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_55" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
-        <height>461</height>
+        <width>801</width>
+        <height>451</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -2935,9 +3305,13 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_25">
        <item>
-        <widget class="QWidget" name="allpic_2" native="true">
+        <widget class="QWidget" name="widget_90" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -2945,36 +3319,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#allpic_2{
-	
-	background-image: url(:/image/image/占位图片.png);
+          <string notr="true">QWidget#widget_90{
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_54">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度1 选择配置项</string>
-          </property>
-         </widget>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget_56" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_17">
+         <layout class="QVBoxLayout" name="verticalLayout_46">
           <item>
            <widget class="QCheckBox" name="cpp_checkBox">
             <property name="text">
@@ -2985,7 +3334,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           <item>
            <widget class="QLabel" name="label_56">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -3000,15 +3349,39 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="path_input_8"/>
+           <widget class="QLineEdit" name="path_input_8">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_53">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
             <property name="text">
              <string>选择文件夹</string>
             </property>
            </widget>
           </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_56" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_56{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
           <item>
            <widget class="QCheckBox" name="py_checkBox">
             <property name="text">
@@ -3019,7 +3392,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
           <item>
            <widget class="QLabel" name="label_55">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -3133,6 +3506,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
                <property name="text">
                 <string>返回</string>
                </property>
@@ -3145,6 +3521,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
                </property>
                <property name="text">
                 <string>下一步</string>
@@ -3161,12 +3540,17 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="allpage_3">
+     <property name="styleSheet">
+      <string notr="true">QWidget#allpage_3{
+	border-image: url(:/image/image/background.png);
+}</string>
+     </property>
      <widget class="QWidget" name="widget_59" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>481</width>
+        <width>801</width>
         <height>461</height>
        </rect>
       </property>
@@ -3175,6 +3559,10 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_27">
        <item>
@@ -3187,24 +3575,9 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QWidget#allpic_3{
-	
-	background-image: url(:/image/image/占位图片.png);
+	background-color: rgba(255, 255, 255, 150);
 }</string>
          </property>
-         <widget class="QLabel" name="label_57">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>90</y>
-            <width>101</width>
-            <height>141</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>应有图片：
-进度2 完成配置</string>
-          </property>
-         </widget>
         </widget>
        </item>
        <item>
@@ -3214,6 +3587,11 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_60{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_18">
           <item>
@@ -3237,9 +3615,236 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
             <property name="text">
              <string>完成</string>
             </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="co_page">
+     <property name="styleSheet">
+      <string notr="true">QWidget#co_page{
+	border-image: url(:/image/image/background.png);
+}</string>
+     </property>
+     <widget class="QWidget" name="widget_65" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>801</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;
+</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_28">
+       <item>
+        <widget class="QWidget" name="widget_66" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_66{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_33">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 12pt &quot;Microsoft YaHei UI&quot;;
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>首先我们在VS Code上下载copilot插件
+如果已经完成过其它配置，可以直接点击
+如果没有，请在下方输入VS Code所在地址
+或者自行下载Github Copilot插件</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_input_9">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="notice_13">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>查找结果显示框</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_54">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>点击下载插件</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_58">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);
+font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;接下来，&lt;/p&gt;&lt;p&gt;如果没有注册过GitHub请先注册账号&lt;/p&gt;&lt;p&gt;并完善个人信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_55">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+            </property>
+            <property name="text">
+             <string>点击进入GitHub注册界面</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_67" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#widget_67{
+	background-color: rgba(255, 255, 255, 150);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_34">
+          <item>
+           <widget class="QWidget" name="widget_68" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_35">
+             <item>
+              <widget class="QLabel" name="label_59">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果您为在校大学生&lt;/p&gt;&lt;p&gt;可以点击下方进入学生认证界面&lt;/p&gt;&lt;p&gt;按照要求上传相关材料后&lt;/p&gt;&lt;p&gt;可以获得免费使用copilot的资格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_58">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+               <property name="text">
+                <string>点击进入学生认证</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_20">
+               <property name="text">
+                <string>完成上述操作后点击下方按钮获取copilot
+之后需要打开VS Code，依照右下提示框进行登录
+或者点击左下“账户”选项进行登录
+登陆完成后，您就可以使用VS Code帮助您进行编程</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_60">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+               <property name="text">
+                <string>点击进入copilot购买页面</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_69" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_29">
+             <item>
+              <widget class="QPushButton" name="pushButton_59">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+               </property>
+               <property name="text">
+                <string>返回</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -3259,17 +3864,6 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      <height>17</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
  </widget>
  <resources/>
