@@ -12,6 +12,11 @@
         <file>image/py进度1.png</file>
         <file>image/py进度0.png</file>
         <file>image/cpp进度3.png</file>
+        <file>image/cpp.png</file>
+        <file>image/cpp进度5.png</file>
+        <file>image/py.png</file>
+        <file>image/other.png</file>
+        <file>image/mouse.png</file>
     </qresource>
     <qresource prefix="/jsondoc">
         <file>jsondoc/c_cpp_properties.json</file>

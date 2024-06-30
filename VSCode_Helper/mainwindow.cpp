@@ -345,6 +345,7 @@ void MainWindow::on_pushButton_16_clicked()
 void MainWindow::on_cnext_button_3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
+    ui->widget_72->setStyleSheet("QWidget#widget_72{\nimage: url(:/image/image/cpp进度4.png);\nbackground-color: rgba(255, 255, 255, 0);}");
     ui->cnext_button_5->hide();
     ui->notice_4->setText("正在按照推荐配置自动生成配置文件\n请耐心等待");
     ui->notice_4->repaint();
@@ -374,6 +375,7 @@ void MainWindow::on_cnext_button_3_clicked()
                 return;
             }
             ui->notice_4->setText("程序已经完成自动配置\n感谢您使用VS Code Helper");
+            ui->widget_72->setStyleSheet("QWidget#widget_72{\nimage: url(:/image/image/cpp进度5.png);\nbackground-color: rgba(255, 255, 255, 0);}");
             ui->cnext_button_5->show();
             return;
         }
@@ -409,6 +411,7 @@ void MainWindow::on_cnext_button_6_clicked()
     int warn = ui->comboBox_warn->currentIndex();
     //copy from 272~309
     ui->stackedWidget->setCurrentIndex(4);
+    ui->widget_72->setStyleSheet("QWidget#widget_72{\nimage: url(:/image/image/cpp进度4.png);\nbackground-color: rgba(255, 255, 255, 0);}");
     ui->cnext_button_5->hide();
     ui->notice_4->setText("正在按照自定义配置自动生成配置文件\n请耐心等待");
     ui->notice_4->repaint();
@@ -438,6 +441,7 @@ void MainWindow::on_cnext_button_6_clicked()
                 return;
             }
             ui->notice_4->setText("程序已经完成自动配置\n感谢您使用VS Code Helper");
+            ui->widget_72->setStyleSheet("QWidget#widget_72{\nimage: url(:/image/image/cpp进度5.png);\nbackground-color: rgba(255, 255, 255, 0);}");
             ui->cnext_button_5->show();
             return;
         }
@@ -1362,6 +1366,100 @@ void MainWindow::on_pushButton_57_clicked()
 
 void MainWindow::on_pushButton_44_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(17);
+    ui->stackedWidget->setCurrentIndex(19);
+    QByteArray username = qgetenv("USERNAME");
+    std::vector<std::string> path_arr;
+    path_arr.push_back(vs_path);
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    std::string aim_arr[1] = {"Code.exe"};
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
+        // 找到
+        ui->path_input_9->setText(vs_path.c_str());
+        ui->notice_13->setText(QString("已自动找到VS Code"));
+        return;
+    } else {
+        //没找到
+        ui->notice_13->setText(QString("没能自动找到VS Code"));
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_59_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_54_clicked()
+{
+    QByteArray username = qgetenv("USERNAME");
+    std::vector<std::string> path_arr;
+    path_arr.push_back(ui->path_input_9->text().toStdString());
+    path_arr.push_back("C:\\users\\" + QString::fromLocal8Bit(username).toStdString() + "\\AppData\\Local\\Programs\\Microsoft VS Code");
+    path_arr.push_back("D:\\Microsoft VS Code"); //测试阶段，这里改成X盘使得VSCode无法直接被找到，记得改回去
+    std::string aim_arr[1] = {"Code.exe"};
+    get_PATH(&path_arr);
+    if (path_check(aim_arr, 1, path_arr, vs_path)) {
+        // 找到
+        if(ui->notice_13->text() != QString("已自动找到VS Code"))
+        ui->notice_13->setText(QString("成功找到VS Code"));
+    } else {
+        //没找到
+        ui->notice_13->setText(QString("没能找到VS Code"));
+        return;
+    }
+    install("github.copilot");
+    install("github.copilot-chat");
+}
+
+
+void MainWindow::on_pushButton_55_clicked()
+{
+    QUrl url("https://github.com/signup?user_email=&source=form-home-signup");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_58_clicked()
+{
+    QUrl url("https://education.github.com/discount_requests/application");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_60_clicked()
+{
+    QUrl url("https://github.com/features/copilot/plans");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
+}
+
+
+void MainWindow::on_pushButton_63_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_41_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(15);
+}
+
+
+void MainWindow::on_pushButton_64_clicked()
+{
+    QUrl url("https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-environment-manager");
+    if (!QDesktopServices::openUrl(url)) {
+        return;
+    }
 }
 
