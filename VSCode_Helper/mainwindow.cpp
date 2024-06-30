@@ -1359,3 +1359,9 @@ void MainWindow::on_pushButton_57_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+
+void MainWindow::on_pushButton_44_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(17);
+}
+
