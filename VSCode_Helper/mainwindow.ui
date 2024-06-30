@@ -631,7 +631,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QWidget#widget_64{
-	image: url(:/image/image/cpp进度0.png);
+	image: url(:/image/image/cpp进度1.png);
     
 	background-color: rgba(255, 255, 255, 0);
 }</string>
@@ -827,7 +827,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QWidget#widget_70{
-	image: url(:/image/image/cpp进度0.png);
+	image: url(:/image/image/cpp进度2.png);
     
 	background-color: rgba(255, 255, 255, 0);
 }</string>
@@ -947,7 +947,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QWidget#widget_72{
-	image: url(:/image/image/cpp进度0.png);
+	image: url(:/image/image/cpp进度4.png);
     
 	background-color: rgba(255, 255, 255, 0);
 }</string>
@@ -3256,7 +3256,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

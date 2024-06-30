@@ -1,8 +1,17 @@
 <RCC>
     <qresource prefix="/image">
-        <file>image/占位图片.png</file>
         <file>image/cpp进度0.png</file>
         <file>image/background.png</file>
+        <file>image/cpp进度1.png</file>
+        <file>image/cpp进度2.png</file>
+        <file>image/cpp进度4.png</file>
+        <file>image/py进度5.png</file>
+        <file>image/py进度4.png</file>
+        <file>image/py进度3.png</file>
+        <file>image/py进度2.png</file>
+        <file>image/py进度1.png</file>
+        <file>image/py进度0.png</file>
+        <file>image/cpp进度3.png</file>
     </qresource>
     <qresource prefix="/jsondoc">
         <file>jsondoc/c_cpp_properties.json</file>
