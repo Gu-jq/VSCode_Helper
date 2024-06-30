@@ -1670,8 +1670,7 @@ font: 12pt &quot;Microsoft YaHei UI&quot;;</string>
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>
-</string>
+                <string/>
                </property>
               </widget>
              </item>
